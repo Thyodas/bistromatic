@@ -11,3 +11,11 @@ int my_char_is_nbr(char c)
         return (1);
     return (0);
 }
+
+int my_arr_size(char **arr)
+{
+    int i = 0;
+
+    for (; arr[i] != 0; i++);
+    return (i);
+}

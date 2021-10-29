@@ -60,7 +60,7 @@ char *clean_zero_before(char *input)
     return (output);
 }
 
-char *turbo_cleaning(char *input)
+char *absolute_cleaning(char *input)
 {
     char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
 
