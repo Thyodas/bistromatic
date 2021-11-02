@@ -22,13 +22,13 @@ char *eval_expr(char *base, char *op, char *str, int size)
     operator_t operators[] = {{"+", &my_add, 1},
         {"-", &my_sub, 1}, {"/", &my_div, 2}, {"*", &my_mul, 2},
         {"%", &my_mod, 2}, {"", NULL, 0}};
-    queue_t *result_queue = shunting_yard(format(str), operators, "0123456789");
+    queue_t *result_queue = shunting_yard(str, operators, "0123456789");
     stack_t *result_stack = rpn(result_queue, operators);
 
     queue_free(result_queue);
     result_str = stack_pop(result_stack);
-    result = convert_base(result_str, "0123456789", base);
-    free(result_str);
+    result = result_str;//convert_base(result_str, "0123456789", base);
+    //free(result_str);
     stack_free(result_stack);
     return (result);
 }
