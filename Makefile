@@ -8,7 +8,7 @@
 SRC    =    $(wildcard *.c)
 OBJ    =    $(SRC:.c=.o)
 
-NAME =     bistromatic
+NAME =     calc
 
 INCDIR = include
 
