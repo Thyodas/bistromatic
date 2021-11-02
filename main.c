@@ -9,10 +9,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "bistromatic.h"
-
-void  my_putstr(char const *);
-int   my_strlen(char const *);
-int   my_atoi(char const *);
+#include "my.h"
 
 static char  *get_expr(unsigned int size)
 {
@@ -53,7 +50,7 @@ static void check_base(char const *b)
 
 int main(int ac, char **av)
 {
-    unsigned int size;
+    int size;
     char *expr;
 
     if (ac != 4) {
@@ -64,7 +61,7 @@ int main(int ac, char **av)
     }
     check_base(av[1]);
     check_ops(av[2]);
-    size = my_atoi(av[3]);
+    size = my_getnbr(av[3]);
     expr = get_expr(size);
     my_putstr(eval_expr(av[1], av[2], expr, size));
     return (EXIT_SUCCESS);

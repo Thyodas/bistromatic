@@ -5,29 +5,55 @@
 ## Makefile
 ##
 
-SRC    =    $(wildcard *.c)
-OBJ    =    $(SRC:.c=.o)
+SRC = main.c \
+	  src/eval_expr/eval_expr.c \
+	  src/eval_expr/shunting_yard.c \
+	  src/eval_expr/rpn.c \
+	  operators.c \
+	  src/stack/stack_funcs.c \
+	  src/queue/queue_funcs.c \
+	  utils.c
 
-NAME =     calc
+OBJ = $(SRC:.c=.o)
 
-INCDIR = include
+NAME = calc
 
-CFLAGS = -I$(INCDIR)
+INCLUDE = include
+
+LIB = lib/my
+
+TEST_FILES = tests/test_eval_expr.c \
+			 tests/test_stack_queue.c \
+			 eval_expr.c \
+			 operators.c \
+			 stack_funcs.c \
+			 shunting_yard.c \
+			 rpn.c \
+			 queue_funcs.c \
+			 utils.c
+
+CFLAGS = -I$(INCLUDE) -Wall -Wextra -g
 
 all: $(NAME)
 
-$(NAME):    $(OBJ)
-		make -C lib/my
-		gcc -g -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy
+make_lib:
+		  make -C $(LIB)
+
+$(NAME): make_lib $(OBJ)
+		 gcc -g -o $(NAME) $(OBJ) -L$(LIB) -lmy
+		 rm -f $(OBJ)
 
 clean:
-		make clean -C lib/my
-		rm -rf $(OBJ)
+	   rm -f $(OBJ)
 
-fclean:        clean
-		make clean -C lib/my
-		rm -rf $(NAME)
+fclean: clean
+		rm -f $(NAME)
 
-re:		fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+tests_run: fclean make_lib
+		   gcc -I$(INCLUDE) -o unit_tests $(TEST_FILES) -L$(LIB) -lmy\
+		   --coverage -lcriterion
+		   ./unit_tests
+
+.PHONY: fclean all debug re clean tests_run make_lib $(NAME)
