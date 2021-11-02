@@ -1,4 +1,4 @@
-#include <stdlib.h>
+/*#include <stdlib.h>
 #include <stdio.h>
 
 char *ARRAY_SUM(char **array)
@@ -49,3 +49,4 @@ char *infin_div(char *dividend, char *divisor)
     return (ARRAY_SUM(decision_table)); // <- infin_div
     // return (decision); <- infin_mod
 }
+*/
