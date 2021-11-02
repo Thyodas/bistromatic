@@ -24,12 +24,12 @@ LIB = lib/my
 
 TEST_FILES = tests/test_eval_expr.c \
 			 tests/test_stack_queue.c \
-			 eval_expr.c \
+			 src/eval_expr/eval_expr.c \
+			 src/eval_expr/shunting_yard.c \
+			 src/eval_expr/rpn.c \
+	  		 src/stack/stack_funcs.c \
+	  		 src/queue/queue_funcs.c \
 			 operators.c \
-			 stack_funcs.c \
-			 shunting_yard.c \
-			 rpn.c \
-			 queue_funcs.c \
 			 utils.c
 
 CFLAGS = -I$(INCLUDE) -Wall -Wextra -g

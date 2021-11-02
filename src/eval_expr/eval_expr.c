@@ -15,10 +15,10 @@ queue_t *shunting_yard(char const *str, operator_t *operators, char *base);
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
 char *format(char *str);
 
-int eval_expr(char *base, char *op, char *str, int size)
+char *eval_expr(char *base, char *op, char *str, int size)
 {
     char *result_str = NULL;
-    int result = 0;
+    char *result = NULL;
     operator_t operators[] = {{"+", &my_add, 1},
         {"-", &my_sub, 1}, {"/", &my_div, 2}, {"*", &my_mul, 2},
         {"%", &my_mod, 2}, {"", NULL, 0}};
