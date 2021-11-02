@@ -5,6 +5,8 @@
 ** Check conditions
 */
 
+#include "include/my.h"
+
 int EQUAL(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);

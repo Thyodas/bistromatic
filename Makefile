@@ -1,33 +1,41 @@
 ##
 ## EPITECH PROJECT, 2021
-## Makefile
+## Makefile do_op
 ## File description:
-## Makefile
+## Makefile used for do_op
 ##
 
-SRC    =    $(wildcard *.c)
-OBJ    =    $(SRC:.c=.o)
+SRC	=	main_inf_mul.c			\
+		inf_mul.c		\
+		add.c			\
+		add_compute.c	\
+		utils.c			\
+		cleaning.c
 
-NAME =     bistromatic
+OBJ	=	$(SRC:.c=.o)
 
-INCDIR = include
+NAME = 	inf_mul
 
-CFLAGS = -I$(INCDIR)
+INCDIR = -I include/
+
+LIBDIR = -L lib/my -lmy
 
 all: $(NAME)
 
-$(NAME):    $(OBJ)
-		make -C lib/my
-		gcc -g -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy
+build_lib:
+	make -C lib/my
+
+$(NAME): build_lib $(OBJ)
+		gcc $(SRC) -o inf_mul $(INCDIR) $(LIBDIR)
 
 clean:
 		make clean -C lib/my
 		rm -rf $(OBJ)
 
-fclean:        clean
-		make clean -C lib/my
+fclean:		clean
+		make fclean -C lib/my
 		rm -rf $(NAME)
 
 re:		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:	all clean fclean re

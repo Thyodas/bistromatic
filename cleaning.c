@@ -5,6 +5,8 @@
 ** Cleaning strings before
 */
 
+#include "include/my.h"
+
 char *remove_sign(char *input)
 {
     char *output;
