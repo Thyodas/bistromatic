@@ -13,11 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: clone_criterion
-      run: git clone --recursive https://github.com/Snaipe/Criterion
-    - name: make_criterion
-      run: meson build
-      run: ninja -C build
+    - name: install_criterion
+      run: sudo add-apt-repository ppa:snaipewastaken/ppa && sudo apt-get update && sudo apt-get install criterion-dev
     - name: make
       run: make
     - name: tests_run
