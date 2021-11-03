@@ -5,6 +5,8 @@
 ** utility
 */
 
+#include "my.h"
+
 void my_rev_str(char *src)
 {
     int ln;

@@ -5,7 +5,10 @@
 ** Infinite multiplication
 */
 
-#include "include/my.h"
+#include "my.h"
+#include "my_operators.h"
+
+void str_initialize_alloc(char *input, int size);
 
 void fill_zeros(char *output, int pos, int *index)
 {
