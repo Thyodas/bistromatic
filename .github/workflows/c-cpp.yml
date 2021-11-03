@@ -13,6 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: clone_criterion
+      run: git clone --recursive https://github.com/Snaipe/Criterion
+    - name: make_criterion
+      run: meson build
+      run: ninja -C build
     - name: make
       run: make
     - name: tests_run
