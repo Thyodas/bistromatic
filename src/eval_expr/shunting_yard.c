@@ -59,7 +59,8 @@ void bracket_handle(queue_t *queue, stack_t *stack, char *current)
 
     if (my_strcmp("(", current) == 0) {
         stack_push(stack, "(");
-    } else if (my_strcmp(")", current) == 0) {
+    }
+    if (my_strcmp(")", current) == 0) {
         while (my_strcmp("(", top) != 0) {
             queue_add(queue, stack_pop(stack));
             top = stack_peek(stack);
