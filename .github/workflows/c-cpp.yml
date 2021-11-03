@@ -26,4 +26,4 @@ jobs:
     - name: install_gcovr
       run: pip install gcovr
     - name: show_coverage
-      run: gcovr --ignore tests/
+      run: gcovr --exclude tests/
