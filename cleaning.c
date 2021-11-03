@@ -5,9 +5,11 @@
 ** Cleaning strings before
 */
 
+#include <stdlib.h>
+
 char *remove_sign(char *input)
 {
-    char *output;
+    char *output = NULL;
 
     if (input[0] != '-')
         return (input);
