@@ -1,4 +1,5 @@
 /*
+
 ** EPITECH PROJECT, 2021
 ** queue_funcs.c
 ** File description:

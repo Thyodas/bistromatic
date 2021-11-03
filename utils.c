@@ -53,9 +53,8 @@ char *my_slicenbr_base(char const *str, char *base)
         return_str[0] = '\0';
         return (return_str);
     }
-    for (int i = start_end[0] ; i < start_end[1] ; i++) {
+    for (int i = start_end[0] ; i < start_end[1] ; i++)
         return_str[i] = str[i];
-    }
     return_str[len] = '\0';
     return (return_str);
 }

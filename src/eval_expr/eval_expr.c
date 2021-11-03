@@ -19,6 +19,7 @@ char *eval_expr(char *base, char *op, char *str, int size)
 {
     char *result_str = NULL;
     char *result = NULL;
+
     operator_t operators[] = {{"+", &my_add, 1},
         {"-", &my_sub, 1}, {"/", &my_div, 2}, {"*", &my_mul, 2},
         {"%", &my_mod, 2}, {"", NULL, 0}};
@@ -27,8 +28,7 @@ char *eval_expr(char *base, char *op, char *str, int size)
 
     queue_free(result_queue);
     result_str = stack_pop(result_stack);
-    result = result_str;//convert_base(result_str, "0123456789", base);
-    //free(result_str);
+    result = result_str;
     stack_free(result_stack);
     return (result);
 }

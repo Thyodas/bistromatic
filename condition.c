@@ -5,7 +5,7 @@
 ** Check conditions
 */
 
-int EQUAL(char *a, char *b)
+int my_equal(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);
     char *str2 = absolute_cleaning(b);
@@ -15,7 +15,7 @@ int EQUAL(char *a, char *b)
     return (0);
 }
 
-int GREATER_EQUALS(char *a, char *b)
+int my_greater_equals(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);
     char *str2 = absolute_cleaning(b);
@@ -25,7 +25,7 @@ int GREATER_EQUALS(char *a, char *b)
     return (0);
 }
 
-int GREATER(char *a, char *b)
+int my_greater(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);
     char *str2 = absolute_cleaning(b);
@@ -35,7 +35,7 @@ int GREATER(char *a, char *b)
     return (0);
 }
 
-int LOWER(char *a, char *b)
+int my_lower(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);
     char *str2 = absolute_cleaning(b);
@@ -45,7 +45,7 @@ int LOWER(char *a, char *b)
     return (0);
 }
 
-int LOWER_EQUALS(char *a, char *b)
+int my_lower_equals(char *a, char *b)
 {
     char *str1 = absolute_cleaning(a);
     char *str2 = absolute_cleaning(b);

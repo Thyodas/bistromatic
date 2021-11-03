@@ -17,7 +17,7 @@ char *infin_div(char *dividend, char *divisor)
     //FILLING LE TABLEAU TQT comme sur wiki
     while (done == 0) {
         temp_value = temp_key * parseStr(divisor); // TODO change to infin_mul
-        if (GREATER_EQUALS(temp_value, dividend)) {
+        if (my_greater_equals(temp_value, dividend)) {
             done = 1;
             break;
         }
@@ -34,11 +34,11 @@ char *infin_div(char *dividend, char *divisor)
     int index_decision = 0;
 
     for (int i = index_table; i > 0; i--) {
-        if (i == index_table && EQUAL(table[1][i], dividend)) {
+        if (i == index_table && my_equal(table[1][i], dividend)) {
             decision += table[1][i]; // TODO replace with infin_add
             decision_table[index_decision++] = table[1][i];
             break;
-        } else if (LOWER_EQUALS(ADD(ARRAY_SUM(decision_table), table[1][i])), dividend) {
+        } else if (my_lower_equals(ADD(ARRAY_SUM(decision_table), table[1][i])), dividend) {
             decision += table[1][i]; // TODO replace with infin_add
             decision_table[index_decision++] = table[1][i];
         } else if (UPPER(ADD(ARRAY_SUM(decision_table), table[1][i])), dividend) {
