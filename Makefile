@@ -10,8 +10,8 @@ SRC = main.c \
 	  src/eval_expr/shunting_yard.c \
 	  src/eval_expr/rpn.c \
 	  operators.c \
-	  src/stack/stack_funcs.c \
-	  src/queue/queue_funcs.c \
+	  src/eval_expr/stack_funcs.c \
+	  src/eval_expr/queue_funcs.c \
 	  utils.c
 
 OBJ = $(SRC:.c=.o)
