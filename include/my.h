@@ -45,7 +45,7 @@ int my_getnbr_base(char const *str, char const *base);
 char **my_str_to_word_array(char const *str);
 int my_show_word_array(char * const *tab);
 int my_swap_char(char *a, char *b);
-void inf_mul(char *number1, char *number2, int sign);
+char *inf_mul(char *number1, char *number2, int sign);
 char *add_classic(char *number1, char *number2, int sign);
 char *turbo_cleaning(char *input);
 void my_swap_ptr(char **str1_ptr, char **str2_ptr);

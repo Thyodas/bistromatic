@@ -15,11 +15,9 @@ void fill_zeros(char *output, int pos, int *index)
 
 int compute_and_push(int tot, char *tmp, int *index, int carry)
 {
-    printf("Valeur de tot : %d\n", tot);
     int to_push = tot % 10;
     tmp[(*index)++] = to_push + '0';
     carry = tot / 10;
-    printf("Valeur de carry : %d\n", carry);
     return (carry);
 }
 
@@ -33,14 +31,11 @@ char *fill_tmp(int i, char *number1, char *number2)
     int carry = 0;
     for (int j = 0; j < len2; ++j) {
         int tot = (number1[i] - '0') * (number2[j] - '0') + carry;
-        carry = compute_and_push(tot, tmp, &index, &carry);
+        carry = compute_and_push(tot, tmp, &index, carry);
     }
-    printf("Valeur de carry : %d\n", carry);
     if (carry != 0)
         tmp[index++] = carry + '0';
-    printf("Valeur de tmp :%s\n", tmp);
     my_revstr(tmp);
-    printf("Valeur de tmp : %s\n", tmp);
     tmp[my_strlen(tmp)] = '\0';
     fill_zeros(tmp, i, &index);
     return tmp;
@@ -61,7 +56,7 @@ char *put_neg_sign(char *result, int sign)
     return new_result;
 }
 
-void inf_mul(char *number1, char *number2, int sign)
+char *inf_mul(char *number1, char *number2, int sign)
 {
     int len1 = my_strlen(number1);
     int len2 = my_strlen(number2);
@@ -82,5 +77,5 @@ void inf_mul(char *number1, char *number2, int sign)
     my_putstr(result);
     free(number1);
     free(number2);
-    free(result);
+    return (result);
 }
