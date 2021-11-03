@@ -1,12 +1,21 @@
-/*#include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-char *ARRAY_SUM(char **array)
+char *my_arr_sum(char **array)
 {
-    // TODO Sum of an strings array
+    int count = 0;
+    int array_count = 0;
+    char result = NULL;
+
+    for (; array[array_count] != 0; array_count++)
+        count += my_strlen(array[array_count]);
+    result = malloc(sizeof(char) * (count + 2));
+    for (int i = 0; i < array_count; i++)
+        result = infin_add(result, array[i]);
+    return (result);
 }
 
-char *infin_div(char *dividend, char *divisor)
+char *infin_div(char *dividend, char *divisor, int modulo)
 {
     char *temp_value = malloc(sizeof(char) * my_strlen(divisor));
     char ***table = malloc(sizeof(char**) * 100);
@@ -16,7 +25,7 @@ char *infin_div(char *dividend, char *divisor)
 
     //FILLING LE TABLEAU TQT comme sur wiki
     while (done == 0) {
-        temp_value = temp_key * parseStr(divisor); // TODO change to infin_mul
+        temp_value = infin_mul(temp_key, divisor);
         if (my_greater_equals(temp_value, dividend)) {
             done = 1;
             break;
@@ -27,26 +36,23 @@ char *infin_div(char *dividend, char *divisor)
         temp_key *= 2;
     }
 
-
     // COMPARAISON DU TABLEAU
-    int decision = 0;
+    char *decision = malloc(sizeof(char) * my_strlen(divisor));
     char **decision_table = malloc(sizeof(char*) * 100);
     int index_decision = 0;
 
     for (int i = index_table; i > 0; i--) {
         if (i == index_table && my_equal(table[1][i], dividend)) {
-            decision += table[1][i]; // TODO replace with infin_add
+            decision = infin_add(decision, table[1][i]);
             decision_table[index_decision++] = table[1][i];
             break;
-        } else if (my_lower_equals(ADD(ARRAY_SUM(decision_table), table[1][i])), dividend) {
-            decision += table[1][i]; // TODO replace with infin_add
+        } else if (my_lower_equals(ADD(my_arr_sum(decision_table), table[1][i])), dividend) {
+            decision = infin_add(decision, table[1][i]);
             decision_table[index_decision++] = table[1][i];
-        } else if (UPPER(ADD(ARRAY_SUM(decision_table), table[1][i])), dividend) {
+        } else if (UPPER(ADD(my_arr_sum(decision_table), table[1][i])), dividend) {
             // do nothing
         }
     }
 
-    return (ARRAY_SUM(decision_table)); // <- infin_div
-    // return (decision); <- infin_mod
+    return modulo ? (decision) : (my_arr_sum(decision_table));
 }
-*/
