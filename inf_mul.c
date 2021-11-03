@@ -17,7 +17,6 @@ int compute_and_push(int tot, char *tmp, int *index, int carry)
 {
     int to_push = tot % 10;
     tmp[(*index)++] = to_push + '0';
-    printf("Valeur de to_push : %d\n", to_push);
     carry = tot / 10;
     return (carry);
 }
@@ -27,8 +26,8 @@ char *fill_tmp(int i, char *number1, char *number2)
     int index = 0;
     int len2 = my_strlen(number2);
     int len_tot = my_strlen(number1) + len2;
-    printf("Valeur de len tot : %d\n", len_tot);
     char *tmp = malloc(sizeof(char) * (len_tot + 2));
+    initialize(tmp, len_tot + 2);
     int carry = 0;
     for (int j = 0; j < len2; ++j) {
         int tot = (number1[i] - '0') * (number2[j] - '0') + carry;
@@ -38,17 +37,17 @@ char *fill_tmp(int i, char *number1, char *number2)
         tmp[index++] = carry + '0';
     my_revstr(tmp);
     tmp[my_strlen(tmp) - 1] = '\0';
-    printf("Valeur de tmp avant le fill zero : %s\n", tmp);
     fill_zeros(tmp, i, &index);
-    printf("Valeur de tmp a la %d eme iteration : %s\n\n", i, tmp);
     return tmp;
 }
 
 char *put_neg_sign(char *result, int sign)
 {
+    int len = my_strlen(result);
     if (sign == 1)
         return result;
-    char *new_result = malloc(sizeof(char) * my_strlen(result) + 2);
+    char *new_result = malloc(sizeof(char) * len + 2);
+    initialize(new_result, len + 2);
     new_result[0] = '-';
     for (int i = 1; i < my_strlen(result) + 1; ++i) {
         new_result[i] = result[i - 1];
@@ -64,6 +63,7 @@ void inf_mul(char *number1, char *number2, int sign)
     my_revstr(number1);
     my_revstr(number2);
     char *result = malloc(sizeof(char) * (len_tot + 2));
+    initialize(result, len_tot + 2);
     char *tmp_res = result;
 
     for (int i = 0; i < len1; ++i) {
@@ -74,4 +74,7 @@ void inf_mul(char *number1, char *number2, int sign)
     }
     result = put_neg_sign(result, sign);
     my_putstr(result);
+    free(number1);
+    free(number2);
+    free(result);
 }

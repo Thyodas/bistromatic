@@ -20,6 +20,7 @@ char *add_classic(char *number1, char *number2, int sign)
     int len_nb1 = my_strlen(number1);
     int len_nb2 = my_strlen(number2);
     char *new_number = malloc(sizeof(char) * len_nb2 + 2);
+    initialize(new_number, len_nb2 + 2);
     int carry = 0;
     int counter = 0;
     for (int i = len_nb1 - 1; i >= 0 && number1[i] != '-'; i--) {

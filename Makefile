@@ -6,11 +6,12 @@
 ##
 
 SRC	=	main_inf_mul.c			\
-		inf_mul.c		\
-		add.c			\
-		add_compute.c	\
-		utils.c			\
-		cleaning.c
+		inf_mul.c				\
+		add.c					\
+		add_compute.c			\
+		utils.c					\
+		cleaning.c				\
+		alloc.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -26,7 +27,7 @@ build_lib:
 	make -C lib/my
 
 $(NAME): build_lib $(OBJ)
-		gcc $(SRC) -o inf_mul $(INCDIR) $(LIBDIR)
+		gcc $(SRC) -o inf_mul $(INCDIR) $(LIBDIR) -g
 
 clean:
 		make clean -C lib/my

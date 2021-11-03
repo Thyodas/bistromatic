@@ -47,4 +47,3 @@ int my_isnum(char const *str)
     }
     return 1;
 }
-

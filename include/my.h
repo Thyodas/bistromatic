@@ -53,4 +53,5 @@ char *add(char *nb1, char *nb2);
 int my_char_is_nbr(char c);
 char *remove_sign(char *input);
 int my_isnum(char const *str);
+void initialize(char *input, int size) ;
 #endif
