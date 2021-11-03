@@ -13,7 +13,9 @@ SRC = main.c \
 	  src/eval_expr/stack_funcs.c \
 	  src/eval_expr/queue_funcs.c \
 	  utils.c \
-	  utility.c
+	  utility.c \
+	  src/operators/mul/inf_mul.c \
+	  src/operators/mul/alloc.c
 
 OBJ = $(SRC:.c=.o)
 
