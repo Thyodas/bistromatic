@@ -27,8 +27,8 @@ TEST_FILES = tests/test_eval_expr.c \
 			 src/eval_expr/eval_expr.c \
 			 src/eval_expr/shunting_yard.c \
 			 src/eval_expr/rpn.c \
-	  		 src/stack/stack_funcs.c \
-	  		 src/queue/queue_funcs.c \
+	  		 src/eval_expr/stack_funcs.c \
+	  		 src/eval_expr/queue_funcs.c \
 			 operators.c \
 			 utils.c
 
