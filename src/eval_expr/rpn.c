@@ -41,8 +41,8 @@ char *int_to_str(int nb)
 char *calculate_previous(stack_t *stack, operator_t *op)
 {
     char *res = NULL;
-    char *b = stack_pop(stack);//clean_zero_before(stack_pop(stack), '0', '-', '+');
-    char *a = stack_pop(stack);//clean_zero_before(stack_pop(stack), '0', '-', '+');
+    char *b = stack_pop(stack);
+    char *a = stack_pop(stack);
 
     res = op->func(a[0] == '+' ? a + 1 : a, b[0] == '+' ? b + 1 : b);
     free(b);
