@@ -12,6 +12,8 @@
 #include "stack.h"
 #include "queue.h"
 
+char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c);
+
 char *int_to_str(int nb)
 {
     int i = 0;
@@ -39,10 +41,10 @@ char *int_to_str(int nb)
 char *calculate_previous(stack_t *stack, operator_t *op)
 {
     char *res = NULL;
-    char *b = stack_pop(stack);
-    char *a = stack_pop(stack);
+    char *b = stack_pop(stack);//clean_zero_before(stack_pop(stack), '0', '-', '+');
+    char *a = stack_pop(stack);//clean_zero_before(stack_pop(stack), '0', '-', '+');
 
-    res = op->func(a, b);
+    res = op->func(a[0] == '+' ? a + 1 : a, b[0] == '+' ? b + 1 : b);
     free(b);
     free(a);
     return (res);

@@ -16,6 +16,8 @@ SRC = main.c \
 	  src/utilities/format.c \
 	  src/operators/mul/alloc.c \
 	  src/operators/mul/inf_mul.c \
+	  src/operators/add_sub/inf_add_sub.c \
+	  src/operators/add_sub/utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -35,9 +37,10 @@ TEST_FILES = tests/test_eval_expr.c \
 	  		 src/eval_expr/stack_funcs.c \
 	  		 src/eval_expr/queue_funcs.c \
 			 src/operators/operators.c \
-			 src/utilities/format.c \
 			 src/operators/add_sub/inf_add_sub.c \
 			 src/operators/add_sub/utils.c \
+			 src/utilities/format.c \
+			 src/utilities/cleaning.c \
 			 utils.c
 
 CFLAGS = -I$(INCLUDE) -Wall -Wextra -g
