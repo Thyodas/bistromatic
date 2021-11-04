@@ -10,13 +10,13 @@
 
     typedef struct operator_s {
         char *symbols;
-        int (*func)(int a, int b);
+        char *(*func)(char *a, char *b);
         int weight;
     } operator_t;
-    int my_mul(int a, int b);
-    int my_sub(int a, int b);
-    int my_add(int a, int b);
-    int my_div(int a, int b);
-    int my_mod(int a, int b);
+    char *my_mul(char *a, char *b);
+    char *my_sub(char *a, char *b);
+    char *my_add(char *a, char *b);
+    char *my_div(char *a, char *b);
+    char *my_mod(char *a, char *b);
     operator_t *get_op(operator_t *array, char *str);
 #endif /* !MY_OPERATORS_H_ */

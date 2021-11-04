@@ -9,37 +9,53 @@
 #include "my.h"
 #include "my_operators.h"
 
-int my_mul(int a, int b)
-{
-    int temp = a * b;
+char *inf_add_sub(char *a, char *b, int neg_a, int neg_b);
+char *int_to_str(int nb);
 
-    return (temp);
+char *my_mul(char *a, char *b)
+{
+    int temp = my_getnbr(a) * my_getnbr(b);
+
+    return (int_to_str(temp));
 }
 
-int my_div(int a, int b)
+char *my_div(char *a, char *b)
 {
-    int temp = a / b;
+    int temp = my_getnbr(a) / my_getnbr(b);
 
-    return (temp);
+    return (int_to_str(temp));
 }
 
-int my_sub(int a, int b)
+char *my_sub(char *a, char *b)
 {
-    int temp = a - b;
+    int temp = my_getnbr(a) - my_getnbr(b);
 
-    return (temp);
+    return (int_to_str(temp));
 }
 
-int my_add(int a, int b)
+/*char *my_add(char *a, char *b)
 {
-    int temp = a + b;
+    char *neg_a = 0;
+    char *neg_b = 0;
+    char *result = NULL;
+    char *err_code = 0;
 
-    return (temp);
+    neg_a = a[0] == '-';
+    neg_b = b[0] == '-';
+    result = inf_add_sub(neg_a ? &a[1] : a,
+    neg_b ? &b[1] : b, neg_a, neg_b);
+    return (result);
+}*/
+char *my_add(char *a, char *b)
+{
+    int temp = my_getnbr(a) + my_getnbr(b);
+
+    return (int_to_str(temp));
 }
 
-int my_mod(int a, int b)
+char *my_mod(char *a, char *b)
 {
-    int temp = a % b;
+    int temp = my_getnbr(a) % my_getnbr(b);
 
-    return (temp);
+    return (int_to_str(temp));
 }
