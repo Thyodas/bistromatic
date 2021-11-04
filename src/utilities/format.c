@@ -31,35 +31,3 @@ char *remove_signs(char *input, char *signs)
     out[index] = '\0';
     return (out);
 }
-
-int format_counter(char *str)
-{
-    int counter = my_strlen(str);
-
-    for (int i = 0; i < my_strlen(str); i++)
-        if (str[i] == '-' && str[i + 1] == '(')
-            counter += 2;
-    return (counter);
-}
-
-char *format(char *str, char *signs)
-{
-    int size = format_counter(str);
-    char *output = malloc(sizeof(char) * (size + 1));
-    int output_index = 0;
-
-    for (int i = 0; i < my_strlen(str); i++) {
-        if ((str[i] == signs[OP_SUB_IDX] || str[i] == signs[OP_PLUS_IDX])
-        && str[i + 1] == signs[0]) {
-            output[output_index] = str[i];
-            output[++output_index] = '1';
-            output[++output_index] = signs[OP_MULT_IDX];
-            output[++output_index] = signs[OP_OPEN_PARENT_IDX];
-            i++;
-        } else
-            output[output_index] = str[i];
-        output_index++;
-    }
-    output[output_index] = '\0';
-    return (output);
-}

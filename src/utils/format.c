@@ -5,6 +5,10 @@
 ** Format(str, operators) to clean extra signs
 */
 
+#include <stdlib.h>
+
+int my_strlen(char *str);
+
 int format_counter(char *str)
 {
     int counter = my_strlen(str);
