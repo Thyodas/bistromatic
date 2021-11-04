@@ -66,7 +66,7 @@ char *format(char *str, char *signs)
 
 char *full_format(char *str)
 {
-    char *removed_signs = remove_signs("-----++-5*--(4+1)-+10", "()+-*/%");
+    char *removed_signs = remove_signs(str, "()+-*/%");
     char *result = format(removed_signs, "()+-*/%");
 
     free(str);
