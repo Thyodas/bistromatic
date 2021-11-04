@@ -13,7 +13,7 @@ SRC = main.c \
 	  src/eval_expr/stack_funcs.c \
 	  src/eval_expr/queue_funcs.c \
 	  utils.c \
-	  src/utils/format.c \
+	  src/utilities/format.c \
 	  src/operators/mul/alloc.c \
 	  src/operators/mul/inf_mul.c \
 
