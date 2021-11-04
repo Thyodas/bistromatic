@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "bistromatic.h"
 
-char *remove_sign(char *input)
+/*char *remove_sign(char *input)
 {
     char *output = NULL;
 
@@ -41,7 +41,7 @@ char *clean_sign(char *input)
             output[temp_index++] = input[i];
     }
     return (output);
-}
+}*/
 
 char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c)
 {
@@ -60,9 +60,13 @@ char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c)
             passed = 1;
             output[temp_index++] = input[i];
         }
+    free(input);
+    output[0] = zero_c;
+    output[temp_index] = '\0';
     return (output);
 }
 
+/*
 char *absolute_cleaning(char *input)
 {
     char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
@@ -71,3 +75,4 @@ char *absolute_cleaning(char *input)
     output = clean_zero_before(output);
     return (output);
 }
+*/
