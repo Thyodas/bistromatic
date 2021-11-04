@@ -11,6 +11,8 @@
 #include "bistromatic.h"
 #include "my.h"
 
+char *full_format(char *str);
+
 static char  *get_expr(unsigned int size)
 {
     char *expr;
@@ -50,8 +52,9 @@ static void check_base(char const *b)
 
 int main(int ac, char **av)
 {
-    int size;
-    char *expr;
+    int size = 0;
+    char *expr = NULL;
+    char *result = NULL;
 
     if (ac != 4 || my_strcmp(av[1], "-h") == 0) {
         my_putstr("Usage: \n./calc base operators size_read\n\nDESCRIPTION\n");
@@ -63,7 +66,10 @@ int main(int ac, char **av)
     check_base(av[1]);
     check_ops(av[2]);
     size = my_getnbr(av[3]);
-    expr = get_expr(size);
-    my_putstr(eval_expr(av[1], av[2], expr, size));
+    expr = full_format(get_expr(size));
+    result = eval_expr(av[1], av[2], expr, size);
+    my_putstr(result);
+    free(expr);
+    free(result);
     return (EXIT_SUCCESS);
 }

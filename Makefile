@@ -9,16 +9,18 @@ SRC = main.c \
 	  src/eval_expr/eval_expr.c \
 	  src/eval_expr/shunting_yard.c \
 	  src/eval_expr/rpn.c \
+	  src/eval_expr/utils.c \
 	  src/operators/operators.c \
 	  src/eval_expr/stack_funcs.c \
 	  src/eval_expr/queue_funcs.c \
-	  utils.c \
 	  src/utilities/format.c \
 	  src/operators/mul/alloc.c \
 	  src/operators/mul/inf_mul.c \
+	  src/operators/add_sub/inf_add_sub.c \
+	  src/operators/add_sub/utils.c \
 	  src/operators/div_mod/infin_div.c \
 	  src/utilities/condition.c \
-	  src/operators/add_sub/utils.c \
+	  src/operators/add_sub/utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -37,11 +39,12 @@ TEST_FILES = tests/test_eval_expr.c \
 			 src/eval_expr/rpn.c \
 	  		 src/eval_expr/stack_funcs.c \
 	  		 src/eval_expr/queue_funcs.c \
+			 src/eval_expr/utils.c \
 			 src/operators/operators.c \
-			 src/utilities/format.c \
 			 src/operators/add_sub/inf_add_sub.c \
 			 src/operators/add_sub/utils.c \
-			 utils.c
+			 src/utilities/format.c \
+			 src/utilities/cleaning.c \
 
 CFLAGS = -I$(INCLUDE) -Wall -Wextra -g
 

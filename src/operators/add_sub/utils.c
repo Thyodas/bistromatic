@@ -27,21 +27,6 @@ int cmp_gt(char const *s1, char const *s2)
         return (-1);
 }
 
-void check_error(int argc, char **argv, int *err_code)
-{
-    if (argc != 3) {
-        *err_code = 84;
-        return;
-    } else if (!my_str_isnum(&argv[1][1]) || !my_str_isnum(&argv[2][1])) {
-        *err_code = 84;
-        return;
-    }
-    if (argv[1][0] != '-' && (argv[1][0] < '0' || argv[1][0] > '9'))
-        *err_code = 84;
-    else if (argv[2][0] != '-' && (argv[2][0] < '0' || argv[2][0] > '9'))
-        *err_code = 84;
-}
-
 char *strip_zeros(char *str)
 {
     int i = str[0] == '-' ? 1 : 0;

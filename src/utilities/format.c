@@ -63,3 +63,13 @@ char *format(char *str, char *signs)
     output[output_index] = '\0';
     return (output);
 }
+
+char *full_format(char *str)
+{
+    char *removed_signs = remove_signs(str, "()+-*/%");
+    char *result = format(removed_signs, "()+-*/%");
+
+    free(str);
+    free(removed_signs);
+    return (result);
+}

@@ -12,10 +12,10 @@ char *my_add(char *a, char *b);
 
 Test(main_test, inf_add_sub1)
 {
-    char *a = my_strdup("876435");
-    char *b = my_strdup("987143265");
+    char *a = my_strdup("-876435");
+    char *b = my_strdup("-987143265");
     char *result = my_add(a, b);
-    cr_assert_str_eq(result, "986266830");
+    cr_assert_str_eq(result, "-988019700");
     free(result);
     free(a);
     free(b);
@@ -23,10 +23,10 @@ Test(main_test, inf_add_sub1)
 
 Test(main_test, inf_add_sub2)
 {
-    char *a = my_strdup("807965");
+    char *a = my_strdup("-807965");
     char *b = my_strdup("34532");
     char *result = my_add(a, b);
-    cr_assert_str_eq(result, "-842497");
+    cr_assert_str_eq(result, "-773433");
     free(result);
     free(a);
     free(b);
@@ -46,7 +46,7 @@ Test(main_test, inf_add_sub3)
 Test(main_test, inf_add_sub4)
 {
     char *a = my_strdup("1234567");
-    char *b = my_strdup("123456789");
+    char *b = my_strdup("-123456789");
     char *result = my_add(a, b);
     cr_assert_str_eq(result, "-122222222");
     free(result);
