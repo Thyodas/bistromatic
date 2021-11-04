@@ -53,10 +53,11 @@ int main(int ac, char **av)
     int size;
     char *expr;
 
-    if (ac != 4) {
-        my_putstr("Usage: ");
-        my_putstr(av[0]);
-        my_putstr(" base ops\"()+_*/%\" exp_len\n");
+    if (ac != 4 || my_strcmp(av[1], "-h") == 0) {
+        my_putstr("Usage: \n./calc base operators size_read\n\nDESCRIPTION\n");
+        my_putstr("- base: all the symbols of the base\n- operators: the sym");
+        my_putstr("bols for the parentheses and the 5 operators\n- size_read");
+        my_putstr(":    number of characters to be read\n");
         return (EXIT_USAGE);
     }
     check_base(av[1]);
