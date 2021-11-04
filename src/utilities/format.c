@@ -21,13 +21,12 @@ char *remove_signs(char *input, char *signs)
             input[i] == signs[OP_SUB_IDX] ? counter++ : i;
         } else if (detected) {
             out[index++] = counter % 2 == 0 ? '+' : '-';
-            out[index++] = input[i];
+            out[index] = input[i];
             counter = 0;
             detected = 0;
-        } else {
+        } else
             out[index] = input[i];
-            index++;
-        }
+        index += detected ? 0 : 1;
     }
     out[index] = '\0';
     return (out);
