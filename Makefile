@@ -28,6 +28,7 @@ LIB = lib/my
 TEST_FILES = tests/test_eval_expr.c \
 			 tests/test_stack_queue.c \
 			 tests/test_format.c \
+			 tests/test_add_sub.c \
 			 src/eval_expr/eval_expr.c \
 			 src/eval_expr/shunting_yard.c \
 			 src/eval_expr/rpn.c \
@@ -35,6 +36,8 @@ TEST_FILES = tests/test_eval_expr.c \
 	  		 src/eval_expr/queue_funcs.c \
 			 src/operators/operators.c \
 			 src/utilities/format.c \
+			 src/operators/add_sub/inf_add_sub.c \
+			 src/operators/add_sub/utils.c \
 			 utils.c
 
 CFLAGS = -I$(INCLUDE) -Wall -Wextra -g

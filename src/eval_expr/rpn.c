@@ -38,14 +38,14 @@ char *int_to_str(int nb)
 
 char *calculate_previous(stack_t *stack, operator_t *op)
 {
-    int res = 0;
+    char *res = NULL;
     char *b = stack_pop(stack);
     char *a = stack_pop(stack);
 
-    res = op->func(my_getnbr(a), my_getnbr(b));
+    res = op->func(a, b);
     free(b);
     free(a);
-    return (int_to_str(res));
+    return (res);
 }
 
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs)
