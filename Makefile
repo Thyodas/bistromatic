@@ -17,7 +17,6 @@ SRC = main.c \
 	  src/operators/mul/alloc.c \
 	  src/operators/mul/inf_mul.c \
 	  src/operators/add_sub/inf_add_sub.c \
-	  src/operators/add_sub/utils.c \
 	  src/operators/div_mod/infin_div.c \
 	  src/utilities/condition.c \
 	  src/operators/add_sub/utils.c
