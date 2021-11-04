@@ -59,34 +59,3 @@ char *my_slicenbr_base(char const *str, char *base)
     return (return_str);
 }
 
-int format_counter(char *str)
-{
-    int counter = my_strlen(str);
-
-    for (int i = 0; i < my_strlen(str); i++)
-        if (str[i] == '-' && str[i + 1] == '(')
-            counter++;
-    return (counter);
-}
-
-char *format(char *str)
-{
-    char *output = malloc(sizeof(char) * (format_counter(str) + 2));
-    int output_index = 0;
-
-    for (int i = 0; i < my_strlen(str); i++) {
-        if (i - 1 < my_strlen(str) && str[i] == '-' && str[i + 1] == '(') {
-            output[output_index] = '-';
-            output[output_index + 1] = '1';
-            output[output_index + 2] = '*';
-            output[output_index + 3] = '(';
-            output_index += 4;
-            i++;
-        } else {
-            output[output_index] = str[i];
-            output_index++;
-        }
-    }
-    output[output_index] = '\0';
-    return (output);
-}
