@@ -13,7 +13,7 @@
 
 queue_t *shunting_yard(char const *str, operator_t *operators, char *base);
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
-char *format(char *str);
+char *format(char *str, char *signs);
 
 char *eval_expr(char *base, char *op, char *str, int size)
 {
