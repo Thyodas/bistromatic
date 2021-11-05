@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_operators.h"
 
-void str_initialize_alloc(char *input, int size);
+char *str_initialize_alloc(char *input, int size);
 
 void fill_zeros(char *output, int pos, int *index)
 {
@@ -64,20 +64,19 @@ char *inf_mul(char *number1, char *number2, int sign)
     int len1 = my_strlen(number1);
     int len2 = my_strlen(number2);
     int len_tot = len1 + len2;
+    char *result = malloc(sizeof(char) * (len_tot + 2));
+    char *tmp_res = str_initialize_alloc(result, len_tot + 2);
+
     my_revstr(number1);
     my_revstr(number2);
-    char *result = malloc(sizeof(char) * (len_tot + 2));
-    str_initialize_alloc(result, len_tot + 2);
-    char *tmp_res = result;
-
     for (int i = 0; i < len1; ++i) {
         char *tmp = fill_tmp(i, number1, number2);
         result = my_add(tmp, tmp_res);
+        free(tmp_res);
         tmp_res = result;
         free(tmp);
     }
     result = put_neg_sign(result, sign);
-    my_putstr(result);
     free(number1);
     free(number2);
     return (result);

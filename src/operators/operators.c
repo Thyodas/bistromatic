@@ -13,12 +13,20 @@ char *inf_add_sub(char *a, char *b, int neg_a, int neg_b);
 char *infin_div(char *a, char *b, int modulo);
 char *add_minus(char *input);
 char *int_to_str(int nb);
+char *inf_mul(char *number1, char *number2, int sign);
 
 char *my_mul(char *a, char *b)
 {
-    int temp = my_getnbr(a) * my_getnbr(b);
+    int neg_a = 0;
+    int neg_b = 0;
+    char *result = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    return (int_to_str(temp));
+    neg_a = s1[0] == '-';
+    neg_b = s2[0] == '-';
+    result = inf_mul(s1, s2, neg_a == neg_b);
+    return (result);
 }
 
 char *my_div(char *a, char *b)
@@ -44,11 +52,9 @@ char *my_sub(char *a, char *b)
     int neg_a = 0;
     int neg_b = 0;
     char *result = NULL;
-    char *s1 = NULL;
-    char *s2 = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    s1 = my_strdup(a);
-    s2 = my_strdup(b);
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
     result = inf_add_sub(neg_a ? &s1[1] : s1,
@@ -63,11 +69,9 @@ char *my_add(char *a, char *b)
     int neg_a = 0;
     int neg_b = 0;
     char *result = NULL;
-    char *s1 = NULL;
-    char *s2 = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    s1 = my_strdup(a);
-    s2 = my_strdup(b);
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
     result = inf_add_sub(neg_a ? &s1[1] : s1,

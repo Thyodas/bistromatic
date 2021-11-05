@@ -20,7 +20,10 @@ SRC = main.c \
 	  src/operators/add_sub/utils.c \
 	  src/utilities/condition.c \
 	  src/utilities/cleaning.c \
-	  src/utilities/format.c
+	  src/utilities/format.c \
+	  src/utilities/conv_base.c \
+	  src/utilities/utils_for_base.c \
+	  src/utilities/math.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -61,6 +64,7 @@ $(NAME): make_lib $(OBJ)
 		 rm -f $(OBJ)
 
 clean:
+	   make clean -C $(LIB)
 	   rm -f $(OBJ)
 
 fclean: clean
