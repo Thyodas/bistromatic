@@ -39,25 +39,26 @@ char *add_minus(char *input)
     return (output);
 }
 
-char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c)
+char *clean_zero_before(char *input)
 {
-    char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
-    int i = 0;
-    int temp_index = 0;
+    int size = my_strlen(input);
+    char *output = malloc(sizeof(char) * (size + 1));
+    int temp_index = input[0] == '-' || input[0] == '+';
     int passed = 0;
 
-    if (input[0] == sub_c || input[0] == plus_c) {
+    if (temp_index)
         output[0] = input[0];
-        i = 1;
-        temp_index = 1;
-    }
-    for (; i < my_strlen(input); i++)
-        if (input[i] != zero_c || passed) {
+    for (int i = temp_index ; i < size ; i++) {
+        if (input[i] != '0' || passed) {
             passed = 1;
             output[temp_index++] = input[i];
         }
+    }
+    if (passed == 0) {
+        output[0] = '0';
+        output[1] = '\0';
+    } else
+        output[temp_index] = '\0';
     free(input);
-    output[0] = zero_c;
-    output[temp_index] = '\0';
     return (output);
 }

@@ -13,7 +13,7 @@
 #include "queue.h"
 #include "bistromatic.h"
 
-char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c);
+char *clean_zero_before(char *input);
 
 char *int_to_str(int nb)
 {
@@ -49,6 +49,8 @@ char *calculate_previous(stack_t *stack, operator_t *op)
         my_putstr(SYNTAX_ERROR_MSG);
         exit(84);
     }
+    b = clean_zero_before(b);
+    a = clean_zero_before(a);
     res = op->func(a[0] == '+' ? a + 1 : a, b[0] == '+' ? b + 1 : b);
     free(b);
     free(a);

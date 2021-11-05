@@ -14,6 +14,7 @@
 queue_t *shunting_yard(char const *str, operator_t *operators, char *base);
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
 char *format(char *str, char *signs);
+char *clean_zero_before(char *input);
 
 char *eval_expr(char *base, char *op, char *str, int size)
 {
@@ -27,7 +28,7 @@ char *eval_expr(char *base, char *op, char *str, int size)
     stack_t *result_stack = rpn(result_queue, operators);
 
     queue_free(result_queue);
-    result_str = stack_pop(result_stack);
+    result_str = clean_zero_before(stack_pop(result_stack));
     result = result_str;
     stack_free(result_stack);
     return (result);
