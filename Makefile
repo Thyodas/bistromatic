@@ -13,13 +13,14 @@ SRC = main.c \
 	  src/operators/operators.c \
 	  src/eval_expr/stack_funcs.c \
 	  src/eval_expr/queue_funcs.c \
-	  src/utilities/format.c \
 	  src/operators/mul/alloc.c \
 	  src/operators/mul/inf_mul.c \
 	  src/operators/add_sub/inf_add_sub.c \
 	  src/operators/div_mod/infin_div.c \
+	  src/operators/add_sub/utils.c \
 	  src/utilities/condition.c \
-	  src/operators/add_sub/utils.c
+	  src/utilities/cleaning.c \
+	  src/utilities/format.c
 
 OBJ = $(SRC:.c=.o)
 
