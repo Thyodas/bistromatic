@@ -10,6 +10,7 @@
 #include "queue.h"
 #include "stack.h"
 #include "my_operators.h"
+#include "bistromatic.h"
 
 queue_t *shunting_yard(char const *str, operator_t *operators, char *base);
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
@@ -28,8 +29,12 @@ char *eval_expr(char *base, char *op, char *str, int size)
     stack_t *result_stack = rpn(result_queue, operators);
 
     queue_free(result_queue);
-    result_str = clean_zero_before(stack_pop(result_stack));
-    result = result_str;
+    result_str = stack_pop(result_stack);
+    if (stack_pop(result_stack) != NULL || result_str == NULL) {
+        my_putstr(SYNTAX_ERROR_MSG);
+        exit (84);
+    }
+    result = clean_zero_before(result_str);
     stack_free(result_stack);
     return (result);
 }
