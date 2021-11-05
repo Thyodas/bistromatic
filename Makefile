@@ -43,8 +43,11 @@ TEST_FILES = tests/test_eval_expr.c \
 			 src/operators/operators.c \
 			 src/operators/add_sub/inf_add_sub.c \
 			 src/operators/add_sub/utils.c \
+			 src/operators/div_mod/infin_div.c \
 			 src/utilities/format.c \
 			 src/utilities/cleaning.c \
+			 src/utilities/condition.c
+
 
 CFLAGS = -I$(INCLUDE) -Wall -Wextra -g
 
