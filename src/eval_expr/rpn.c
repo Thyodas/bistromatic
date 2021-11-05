@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "stack.h"
 #include "queue.h"
+#include "bistromatic.h"
 
 char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c);
 
@@ -44,6 +45,10 @@ char *calculate_previous(stack_t *stack, operator_t *op)
     char *b = stack_pop(stack);
     char *a = stack_pop(stack);
 
+    if (a == NULL || b == NULL) {
+        my_putstr(SYNTAX_ERROR_MSG);
+        exit(84);
+    }
     res = op->func(a[0] == '+' ? a + 1 : a, b[0] == '+' ? b + 1 : b);
     free(b);
     free(a);
