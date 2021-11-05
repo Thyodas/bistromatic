@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2021
+** Infin_div & Infin_mod
+** File description:
+** infin_div
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "my_operators.h"
@@ -8,46 +15,33 @@ int my_greater_equals(char *a, char *b);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
 
-char *my_arr_sum(char **array)
-{
-    int count = 0;
-    char *result = NULL;
-    int i;
-    int index = 0;
-
-    for (i = 0; array[i] != 0; i++)
-        count += my_strlen(array[i]);
-    result = malloc(sizeof(char) * (count + 2));
-    result = "0";
-    index = i;
-    for (i = 0; i < index; i++)
-        result = my_add(result, array[i]);
-    result[count] = '\0';
-    return (result);
-}
-
 char *infin_div_two(char *dividend, char ***table, int index_table, int modulo)
 {
-    char **values = malloc(sizeof(char*) * (index_table + 1));
+    char *sum = NULL;
+    char *tmp_sum = NULL;
     char *result = malloc(sizeof(char) * my_strlen(dividend));
-    int value = 1;
 
-    values[0] = table[index_table - 1][1];
+    sum = "0";
+    sum = my_add(sum, table[index_table - 1][1]);
+    result[0] = '0';
+    result[1] = '\0';
     result = my_add(result, table[index_table - 1][0]);
+    free(table[index_table - 1][0]);
     for (int i = index_table - 1; i >= 0; i--)
-        if (my_lower(my_add(my_arr_sum(values), table[i][1]), dividend)) {
-            values[value] = table[i][1];
-            value++;
+        if (my_lower(my_add(sum, table[i][1]), dividend)) {
+            tmp_sum = sum;
+            sum = my_add(tmp_sum, table[i][1]);
+            free(tmp_sum);
             result = my_add(result, table[i][0]);
         }
-    return modulo ? (my_sub(dividend, my_arr_sum(values))) : (result);
+    return modulo ? (my_sub(dividend, sum)) : (result);
 }
 
 char *infin_div(char *dividend, char *divisor, int modulo)
 {
     char ***table = malloc(sizeof(char**) * 100);
     char **lines = NULL;
-    char *temp_value = malloc(sizeof(char) * my_strlen(divisor));
+    char *temp_value = NULL;
     char *temp_key = "1";
     int index_table = 0;
 
