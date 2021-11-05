@@ -8,19 +8,23 @@
 #include <stdlib.h>
 #include "bistromatic.h"
 
-/*char *remove_sign(char *input)
+int my_strlen(char *input);
+
+char *remove_sign(char *input)
 {
     char *output = NULL;
+    int i = 0;
 
     if (input[0] != '-')
         return (input);
     output = malloc(sizeof(char) * (my_strlen(input) + 1));
-    for (int i = 1; i < my_strlen(input); i++)
+    for (i = 1; i < my_strlen(input); i++)
         output[i - 1] = input[i];
+    output[i - 1] = '\0';
     return (output);
 }
 
-char *clean_sign(char *input)
+/*char *clean_sign(char *input)
 {
     char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
     int minus = 0;

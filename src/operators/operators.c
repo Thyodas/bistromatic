@@ -21,9 +21,26 @@ char *my_mul(char *a, char *b)
 
 char *my_div(char *a, char *b)
 {
-    int temp = my_getnbr(a) / my_getnbr(b);
+    int minus = 0;
+    char *s1 = malloc(sizeof(char) * (remove_sign(my_strlen(a)) + 1));
+    char *s2 = malloc(sizeof(char) * (remove_sign(my_strlen(b)) + 1));
+    char *modulo = NULL;
+    char *result = NULL;
 
-    return (int_to_str(temp));
+    if (a[0] == '-')
+        minus++;
+    if (b[0] == '-')
+        minus++;
+    s1 = my_strcpy(s1, a);
+    s2 = my_strcpy(s2, b);
+    modulo = infin_div(s1, s2, 0);
+    if (minus == 1) {
+        result = malloc(sizeof(char) * (my_strlen(result) + 2));
+        result[0] = '-';
+        my_strcpy(result, modulo);
+        return (result);
+    }
+    return (modulo);
 }
 
 char *my_sub(char *a, char *b)
@@ -52,7 +69,24 @@ char *my_add(char *a, char *b)
 
 char *my_mod(char *a, char *b)
 {
-    int temp = my_getnbr(a) % my_getnbr(b);
+    int minus = 0;
+    char *s1 = malloc(sizeof(char) * (remove_sign(my_strlen(a)) + 1));
+    char *s2 = malloc(sizeof(char) * (remove_sign(my_strlen(b)) + 1));
+    char *modulo = NULL;
+    char *result = NULL;
 
-    return (int_to_str(temp));
+    if (a[0] == '-')
+        minus++;
+    if (b[0] == '-')
+        minus++;
+    s1 = my_strcpy(s1, a);
+    s2 = my_strcpy(s2, b);
+    modulo = infin_div(s1, s2, 1);
+    if (minus == 1) {
+        result = malloc(sizeof(char) * (my_strlen(result) + 2));
+        result[0] = '-';
+        my_strcpy(result, modulo);
+        return (result);
+    }
+    return (modulo);
 }
