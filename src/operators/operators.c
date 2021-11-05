@@ -48,11 +48,9 @@ char *my_sub(char *a, char *b)
     int neg_a = 0;
     int neg_b = 0;
     char *result = NULL;
-    char *s1 = NULL;
-    char *s2 = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    s1 = my_strdup(a);
-    s2 = my_strdup(b);
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
     result = inf_add_sub(neg_a ? &s1[1] : s1,
@@ -67,11 +65,9 @@ char *my_add(char *a, char *b)
     int neg_a = 0;
     int neg_b = 0;
     char *result = NULL;
-    char *s1 = NULL;
-    char *s2 = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    s1 = my_strdup(a);
-    s2 = my_strdup(b);
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
     result = inf_add_sub(neg_a ? &s1[1] : s1,
