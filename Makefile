@@ -37,7 +37,6 @@ TEST_FILES = tests/test_eval_expr.c \
 			 tests/test_stack_queue.c \
 			 tests/test_format.c \
 			 tests/test_add_sub.c \
-			 main.c \
 			 src/eval_expr/eval_expr.c \
 			 src/eval_expr/shunting_yard.c \
 			 src/eval_expr/rpn.c \
