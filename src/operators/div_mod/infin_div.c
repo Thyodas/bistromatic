@@ -39,7 +39,7 @@ char *infin_div_two(char *dividend, char ***table, int index_table, int modulo)
 
 char *infin_div(char *dividend, char *divisor, int modulo)
 {
-    char ***table = malloc(sizeof(char**) * 100);
+    char ***table = malloc(sizeof(char **) * 100);
     char **lines = NULL;
     char *temp_value = NULL;
     char *temp_key = "1";
@@ -49,7 +49,7 @@ char *infin_div(char *dividend, char *divisor, int modulo)
         temp_value = my_mul(temp_key, divisor);
         if (my_greater_equals(temp_value, dividend))
             break;
-        lines = malloc(sizeof(char*) * 3);
+        lines = malloc(sizeof(char *) * 3);
         lines[0] = temp_key;
         lines[1] = temp_value;
         table[index_table] = lines;

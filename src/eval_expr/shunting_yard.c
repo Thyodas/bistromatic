@@ -39,7 +39,7 @@ int nb_handle(queue_t *queue, char const *str, int i, char *base)
 
     if (i > 0 && (str[i] == '-' || str[i] == '+')) {
         temp[0] = str[i - 1];
-        if (str[i - 1] == ')'|| my_strstr(base, temp)) {
+        if (str[i - 1] == ')' || my_strstr(base, temp)) {
             free(nbr);
             return (0);
         }

@@ -54,7 +54,7 @@ int find_sign(char *number, char *operators, int *nb_of_sign)
 
 char *handle_sign(int sign, char *new_number)
 {
-    if(sign == 1)
+    if (sign == 1)
         return new_number;
     int len = my_strlen(new_number);
     char *number_with_sign = malloc(sizeof(char) * len + 2);
