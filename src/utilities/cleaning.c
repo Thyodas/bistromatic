@@ -24,28 +24,20 @@ char *remove_sign(char *input)
     return (output);
 }
 
-/*char *clean_sign(char *input)
+char *add_minus(char *input)
 {
-    char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
-    int minus = 0;
-    int temp_index = 0;
+    char *output = malloc(sizeof(char) * (my_strlen(input) + 2));
+    int index = 0;
 
-    for (int i = 0; i < my_strlen(input); i++)
-        if (input[i] == '-')
-            minus++;
-    minus = minus % 2 == 0 ? 0 : 1;
-    for (int i = 0; i < my_strlen(input); i++) {
-        if (minus == 1) {
-            output[0] = '-';
-            minus = 99;
-            i++;
-            temp_index++;
-        }
-        if (my_char_is_nbr(input[i]))
-            output[temp_index++] = input[i];
+    output[0] = '-';
+    for (int i = 1; i <= my_strlen(input); i++) {
+        if (i == 0)
+            continue;
+        output[i] = input[index];
+        index++;
     }
     return (output);
-}*/
+}
 
 char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c)
 {
@@ -69,14 +61,3 @@ char *clean_zero_before(char *input, char zero_c, char sub_c, char plus_c)
     output[temp_index] = '\0';
     return (output);
 }
-
-/*
-char *absolute_cleaning(char *input)
-{
-    char *output = malloc(sizeof(char) * (my_strlen(input) + 1));
-
-    output = clean_sign(input);
-    output = clean_zero_before(output);
-    return (output);
-}
-*/
