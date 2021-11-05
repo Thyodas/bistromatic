@@ -29,4 +29,3 @@ char *my_power_str(char *number, int power)
     }
     return tmp;
 }
-

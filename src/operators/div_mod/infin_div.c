@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2021
+** INFIN_DIV
+** File description:
+** division for infinite numbers
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "my_operators.h"
@@ -28,7 +35,7 @@ char *my_arr_sum(char **array)
 
 char *infin_div_two(char *dividend, char ***table, int index_table, int modulo)
 {
-    char **values = malloc(sizeof(char*) * (index_table + 1));
+    char **values = malloc(sizeof(char *) * (index_table + 1));
     char *result = malloc(sizeof(char) * my_strlen(dividend));
     int value = 1;
 
@@ -45,7 +52,7 @@ char *infin_div_two(char *dividend, char ***table, int index_table, int modulo)
 
 char *infin_div(char *dividend, char *divisor, int modulo)
 {
-    char ***table = malloc(sizeof(char**) * 100);
+    char ***table = malloc(sizeof(char **) * 100);
     char **lines = NULL;
     char *temp_value = malloc(sizeof(char) * my_strlen(divisor));
     char *temp_key = "1";
@@ -55,7 +62,7 @@ char *infin_div(char *dividend, char *divisor, int modulo)
         temp_value = my_mul(temp_key, divisor);
         if (my_greater_equals(temp_value, dividend))
             break;
-        lines = malloc(sizeof(char*) * 3);
+        lines = malloc(sizeof(char *) * 3);
         lines[0] = temp_key;
         lines[1] = temp_value;
         table[index_table] = lines;

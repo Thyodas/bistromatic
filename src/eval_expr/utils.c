@@ -58,4 +58,3 @@ char *my_slicenbr_base(char const *str, char *base)
     return_str[len] = '\0';
     return (return_str);
 }
-
