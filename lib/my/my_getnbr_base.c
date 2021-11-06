@@ -48,7 +48,7 @@ static void chkn(char const *str, int *is_neg, int *strt_end, char const *base)
     temp[0] = str[i];
     while (str[i] != '\0' && (str[i] == '-' || str[i] == '+')) {
         if (str[i] == '-')
-                *is_neg = *is_neg ? 0 : 1;
+            *is_neg = *is_neg ? 0 : 1;
         i++;
         temp[0] = str[i];
     }
