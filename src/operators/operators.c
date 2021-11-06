@@ -10,7 +10,7 @@
 #include "my_operators.h"
 
 char *inf_add_sub(char *a, char *b, int neg_a, int neg_b);
-char *infin_div(char *a, char *b, int modulo);
+char *infin_div(char *a, char *b, int modulo, int sign);
 char *add_minus(char *input);
 char *int_to_str(int nb);
 char *inf_mul(char *number1, char *number2, int sign);
@@ -44,7 +44,7 @@ char *my_div(char *a, char *b)
 
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
-    result = infin_div(remove_sign(s1), remove_sign(s2), 0);
+    result = infin_div(remove_sign(s1), remove_sign(s2), 0, neg_a == neg_b);
     if (neg_a)
         free(s1);
     if (neg_b)
@@ -96,7 +96,7 @@ char *my_mod(char *a, char *b)
 
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
-    result = infin_div(remove_sign(s1), remove_sign(s2), 1);
+    result = infin_div(remove_sign(s1), remove_sign(s2), 1, neg_a == neg_b);
     if (neg_a)
         free(s1);
     if (neg_b)

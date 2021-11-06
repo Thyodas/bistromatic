@@ -20,6 +20,7 @@ int my_greater_equals(char *a, char *b);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
 int my_equal(char *a, char *b);
+char *put_neg_sign(char *result, int sign);
 
 char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
@@ -65,7 +66,7 @@ void create_stacks(char *dividend, char *divisor, stack_t *keys, stack_t *values
     }
 }
 
-char *infin_div(char *dividend, char *divisor, int modulo)
+char *infin_div(char *dividend, char *divisor, int modulo, int sign)
 {
     stack_t *keys = stack_create();
     stack_t *values = stack_create();
@@ -77,11 +78,11 @@ char *infin_div(char *dividend, char *divisor, int modulo)
     } else if (my_equal(dividend, divisor)) {
         stack_free(keys);
         stack_free(values);
-        return (modulo ? my_strdup("0") : my_strdup("1"));
+        return (modulo ? my_strdup("0") : put_neg_sign(my_strdup("1"), sign));
     }
     create_stacks(dividend, divisor, keys, values);
     result = infin_div_two(dividend, keys, values, modulo);
     stack_free(keys);
     stack_free(values);
-    return (result);
+    return (put_neg_sign(result, sign));
 }
