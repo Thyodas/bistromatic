@@ -28,7 +28,8 @@ char *inf_add(char *a, char *b, int len[], char *result)
         result[i] = temp % 10 + '0';
     }
     result[max] = result[max] == '0' ? '\0' : result[max];
-    result[max + 1] = '\0';
+    if (result[max] != '\0')
+        result[max + 1] = '\0';
     return (my_revstr(result));
 }
 
