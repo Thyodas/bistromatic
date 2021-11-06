@@ -23,7 +23,8 @@ SRC = main.c \
 	  src/utilities/format.c \
 	  src/utilities/conv_base.c \
 	  src/utilities/utils_for_base.c \
-	  src/utilities/math.c
+	  src/utilities/math.c \
+	  src/error_handling.c
 
 OBJ = $(SRC:.c=.o)
 
