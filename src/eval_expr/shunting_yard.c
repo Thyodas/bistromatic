@@ -10,6 +10,7 @@
 #include "stack.h"
 #include "queue.h"
 #include "my_operators.h"
+#include "bistromatic.h"
 
 char *my_slicenbr_base(char const *str, char *base);
 
@@ -61,9 +62,13 @@ void bracket_handle(queue_t *queue, stack_t *stack, char *current)
         stack_push(stack, my_strdup("("));
     }
     if (my_strcmp(")", current) == 0) {
-        while (my_strcmp("(", top) != 0) {
+        while (my_strcmp("(", top) != 0 && top[0] != '\0') {
             queue_add(queue, stack_pop(stack));
             top = stack_peek(stack);
+        }
+        if (top[0] == '\0') {
+            my_putstr(SYNTAX_ERROR_MSG);
+            exit (84);
         }
         free(stack_pop(stack));
     }
