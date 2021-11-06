@@ -15,6 +15,7 @@
 
 char *my_add(char *a, char *b);
 int my_lower(char *a, char *b);
+int my_lower_equals(char *a, char *b);
 int my_greater_equals(char *a, char *b);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
