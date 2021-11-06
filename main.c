@@ -34,12 +34,19 @@ static char  *get_expr(unsigned int size)
     return (expr);
 }
 
-static void check_all(char const *ops, char const *b)
+static void check_ops(char const *ops)
 {
-    if (my_strlen(b) < 2 || duplicates_detector(b) || my_strlen(ops) != 7
-    || duplicates_detector(ops) || same_char(ops, b)) {
+    if (my_strlen(ops) != 7) {
         my_putstr(SYNTAX_ERROR_MSG);
         exit(EXIT_OPS);
+    }
+}
+
+static void check_base(char const *b)
+{
+    if (my_strlen(b) < 2) {
+        my_putstr(SYNTAX_ERROR_MSG);
+        exit(EXIT_BASE);
     }
 }
 
@@ -56,7 +63,8 @@ int main(int ac, char **av)
         my_putstr(":    number of characters to be read\n");
         return (EXIT_USAGE);
     }
-    check_all(av[1], av[2]);
+    check_base(av[1]);
+    check_ops(av[2]);
     size = my_getnbr(av[3]);
     expr = get_expr(size);
     result = eval_expr(av[1], av[2], expr, size);
