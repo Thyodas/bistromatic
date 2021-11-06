@@ -26,7 +26,8 @@ SRC = main.c \
 	  src/utilities/utils_for_stack_base.c \
 	  src/utilities/base_to_base.c \
 	  src/utilities/base_to_decimal.c \
-	  src/utilities/decimal_to_base.c
+	  src/utilities/decimal_to_base.c \
+	  src/utilities/error_handling.c
 
 OBJ = $(SRC:.c=.o)
 
