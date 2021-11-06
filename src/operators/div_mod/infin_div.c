@@ -46,7 +46,7 @@ char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
     return (modulo ? my_sub(dividend, values_sum) : keys_sum);
 }
 
-void create_stacks(char *dividend, char *divisor, stack_t *keys, stack_t *values)
+void create_table(char *divide, char *divisor, stack_t *keys, stack_t *values)
 {
 
     char *temp_value = my_strdup("1");
@@ -55,7 +55,7 @@ void create_stacks(char *dividend, char *divisor, stack_t *keys, stack_t *values
 
     while (1) {
         temp_value = my_mul(temp_key, divisor);
-        if (my_greater_equals(temp_value, dividend)) {
+        if (my_greater_equals(temp_value, divide)) {
             free(temp_value);
             free(temp_key);
             break;
@@ -80,7 +80,7 @@ char *infin_div(char *dividend, char *divisor, int modulo, int sign)
         stack_free(values);
         return (modulo ? my_strdup("0") : put_neg_sign(my_strdup("1"), sign));
     }
-    create_stacks(dividend, divisor, keys, values);
+    create_table(dividend, divisor, keys, values);
     result = infin_div_two(dividend, keys, values, modulo);
     stack_free(keys);
     stack_free(values);
