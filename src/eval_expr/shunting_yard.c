@@ -23,8 +23,8 @@ operator_t *operators)
     int op_weight = 0;
 
     if (op->weight != 0) {
-        op_weight = get_op(op, op_str)->weight;
-        while (get_op(op, top)->weight >= op_weight && my_strlen(top) != 0) {
+        op_weight = get_op(operators, op_str)->weight;
+        while (get_op(operators, top)->weight >= op_weight && my_strlen(top) != 0) {
             queue_add(queue, stack_pop(stack));
             top = stack_peek(stack);
         }
