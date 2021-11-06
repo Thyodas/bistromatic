@@ -9,6 +9,24 @@
 #include "mylist.h"
 #include <stdlib.h>
 
+int stack_base_size(stack_base *begin);
+
+char *compute_stack(stack_base *stack, char *base_to)
+{
+    int list_size = stack_base_size(stack);
+    char *output = malloc(sizeof(char) * list_size + 1);
+    int index = 0;
+
+    while (stack != NULL) {
+        char mod = my_getnbr(stack->nbr);
+        free(stack->nbr);
+        char to_push = base_to[mod];
+        output[index++] = to_push;
+    }
+    output[index] = '\0';
+    return output;
+}
+
 stack_base *fill_stack_nbr(char *nbr, char *base)
 {
     stack_base *stack = NULL;
