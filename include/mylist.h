@@ -13,4 +13,9 @@
         struct linked_list_s *next;
     } linked_list_t;
 
+    typedef struct linked_list_stack_base {
+        char *nbr;
+        struct linked_list_stack_base *next;
+    } stack_base;
+
 #endif /* !MYLIST_H_H */

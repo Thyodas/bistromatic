@@ -56,14 +56,14 @@ void create_table(char *divide, char *divisor, stack_t *keys, stack_t *values)
     while (1) {
         temp_value = my_mul(temp_key, divisor);
         if (my_greater_equals(temp_value, divide)) {
-            free(temp_value);
-            free(temp_key);
             break;
         }
         stack_push(keys, temp_key);
         stack_push(values, temp_value);
         temp_key = my_mul(temp_key, "2");
     }
+    free(temp_value);
+    free(temp_key);
 }
 
 char *infin_div(char *dividend, char *divisor, int modulo, int sign)
@@ -84,5 +84,7 @@ char *infin_div(char *dividend, char *divisor, int modulo, int sign)
     result = infin_div_two(dividend, keys, values, modulo);
     stack_free(keys);
     stack_free(values);
+    free(dividend);
+    free(divisor);
     return (put_neg_sign(result, sign));
 }
