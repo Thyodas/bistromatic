@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "my_operators.h"
+#include "mylist.h"
+#include "stack.h"
+#include "bistromatic.h"
+#include "my.h"
 
 char *my_add(char *a, char *b);
 int my_lower(char *a, char *b);
@@ -15,46 +19,48 @@ int my_greater_equals(char *a, char *b);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
 
-char *infin_div_two(char *dividend, char ***table, int index_table, int modulo)
+char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
-    char *sum = NULL;
-    char *tmp_sum = NULL;
-    char *result = malloc(sizeof(char) * my_strlen(dividend));
+    char *previous_sum = NULL;
+    char *keys_sum = my_strdup("0");
+    char *values_sum = my_strdup("0");
 
-    sum = "0";
-    sum = my_add(sum, table[index_table - 1][1]);
-    result[0] = '0';
-    result[1] = '\0';
-    result = my_add(result, table[index_table - 1][0]);
-    free(table[index_table - 1][0]);
-    for (int i = index_table - 1; i >= 0; i--)
-        if (my_lower(my_add(sum, table[i][1]), dividend)) {
-            tmp_sum = sum;
-            sum = my_add(tmp_sum, table[i][1]);
-            free(tmp_sum);
-            result = my_add(result, table[i][0]);
+    while (stack_peek(values)[0] != '\0' && stack_peek(keys)[0] != '\0') {
+        char *tmp_sum = my_add(values_sum, stack_peek(values));
+        if (my_lower_equals(tmp_sum, dividend)) {
+            previous_sum = keys_sum;
+            keys_sum = my_add(keys_sum, stack_pop(keys));
+            free(previous_sum);
+            previous_sum = values_sum;
+            values_sum = my_add(values_sum, stack_pop(values));
+            free(previous_sum);
+        } else {
+            free(stack_pop(values));
+            free(stack_pop(keys));
         }
-    return modulo ? (my_sub(dividend, sum)) : (result);
+        free(tmp_sum);
+    }
+    return (modulo ? my_sub(dividend, values_sum) : keys_sum);
 }
 
 char *infin_div(char *dividend, char *divisor, int modulo)
 {
-    char ***table = malloc(sizeof(char **) * 100);
-    char **lines = NULL;
-    char *temp_value = NULL;
-    char *temp_key = "1";
-    int index_table = 0;
+    stack_t *keys = stack_create();
+    stack_t *values = stack_create();
+    char *temp_value = my_strdup("1");
+    char *temp_key = my_strdup("1");
+    char *previous_calc = NULL;
 
     while (1) {
         temp_value = my_mul(temp_key, divisor);
-        if (my_greater_equals(temp_value, dividend))
+        if (my_greater_equals(temp_value, dividend)) {
+            free(temp_value);
+            free(temp_key);
             break;
-        lines = malloc(sizeof(char *) * 3);
-        lines[0] = temp_key;
-        lines[1] = temp_value;
-        table[index_table] = lines;
-        index_table++;
+        }
+        stack_push(keys, temp_key);
+        stack_push(values, temp_value);
         temp_key = my_mul(temp_key, "2");
     }
-    return (infin_div_two(dividend, table, index_table, modulo));
+    return (infin_div_two(dividend, keys, values, modulo));
 }

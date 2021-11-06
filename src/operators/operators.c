@@ -36,19 +36,19 @@ char *my_mul(char *a, char *b)
 
 char *my_div(char *a, char *b)
 {
-    int minus = 0;
+    int neg_a = 0;
+    int neg_b = 0;
     char *result = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    if (a[0] == '-') {
-        a++;
-        minus++;
-    }
-    if (b[0] == '-') {
-        b++;
-        minus++;
-    }
-    result = malloc(sizeof(char) * (my_strlen(a) - 1));
-    result = minus % 2 ? add_minus(infin_div(a, b, 0)) : infin_div(a, b, 0);
+    neg_a = s1[0] == '-';
+    neg_b = s2[0] == '-';
+    result = infin_div(remove_sign(s1), remove_sign(s2), 0);
+    if (neg_a)
+        free(s1);
+    if (neg_b)
+        free(s2);
     return (result);
 }
 
@@ -88,18 +88,18 @@ char *my_add(char *a, char *b)
 
 char *my_mod(char *a, char *b)
 {
-    int minus = 0;
+    int neg_a = 0;
+    int neg_b = 0;
     char *result = NULL;
+    char *s1 = my_strdup(a);
+    char *s2 = my_strdup(b);
 
-    if (a[0] == '-') {
-        a++;
-        minus++;
-    }
-    if (b[0] == '-') {
-        b++;
-        minus++;
-    }
-    result = malloc(sizeof(char) * (my_strlen(a) - 1));
-    result = minus % 2 ? add_minus(infin_div(a, b, 1)) : infin_div(a, b, 1);
+    neg_a = s1[0] == '-';
+    neg_b = s2[0] == '-';
+    result = infin_div(remove_sign(s1), remove_sign(s2), 1);
+    if (neg_a)
+        free(s1);
+    if (neg_b)
+        free(s2);
     return (result);
 }
