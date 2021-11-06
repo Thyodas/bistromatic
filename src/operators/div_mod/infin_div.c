@@ -19,6 +19,7 @@ int my_lower_equals(char *a, char *b);
 int my_greater_equals(char *a, char *b);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
+int my_equal(char *a, char *b);
 
 char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
@@ -44,10 +45,9 @@ char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
     return (modulo ? my_sub(dividend, values_sum) : keys_sum);
 }
 
-char *infin_div(char *dividend, char *divisor, int modulo)
+void create_stacks(char *dividend, char *divisor, stack_t *keys, stack_t *values)
 {
-    stack_t *keys = stack_create();
-    stack_t *values = stack_create();
+
     char *temp_value = my_strdup("1");
     char *temp_key = my_strdup("1");
     char *previous_calc = NULL;
@@ -63,5 +63,25 @@ char *infin_div(char *dividend, char *divisor, int modulo)
         stack_push(values, temp_value);
         temp_key = my_mul(temp_key, "2");
     }
-    return (infin_div_two(dividend, keys, values, modulo));
+}
+
+char *infin_div(char *dividend, char *divisor, int modulo)
+{
+    stack_t *keys = stack_create();
+    stack_t *values = stack_create();
+    char *result = NULL;
+
+    if (divisor[0] == '0') {
+        my_putstr(SYNTAX_ERROR_MSG);
+        exit (84);
+    } else if (my_equal(dividend, divisor)) {
+        stack_free(keys);
+        stack_free(values);
+        return (modulo ? my_strdup("0") : my_strdup("1"));
+    }
+    create_stacks(dividend, divisor, keys, values);
+    result = infin_div_two(dividend, keys, values, modulo);
+    stack_free(keys);
+    stack_free(values);
+    return (result);
 }
