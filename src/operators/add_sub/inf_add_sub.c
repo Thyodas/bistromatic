@@ -8,6 +8,7 @@
 #include "my.h"
 
 int cmp_gt(char const *s1, char const *s2);
+int my_greater(char *a, char *b);
 
 char *inf_add(char *a, char *b, int len[], char *result)
 {
@@ -17,6 +18,8 @@ char *inf_add(char *a, char *b, int len[], char *result)
     char ca = '0';
     char cb = '0' ;
 
+    my_revstr(a);
+    my_revstr(b);
     for (int i = 0 ; i < max + 1 ; i++) {
         ca = i < len[0] ? a[i] : '0';
         cb = i < len[1] ? b[i] : '0';
@@ -54,11 +57,13 @@ char *compute_sub(char *a, char *b, int len[], char *result)
 
 char *inf_sub(char *a, char *b, int negs[], char *result)
 {
-    int pos_max = cmp_gt(a, b) >= 0 ? 0 : 1;
+    int pos_max = my_greater(a, b) ? 0 : 1;
     char *max = pos_max == 1 ? b : a;
     char *min = pos_max == 1 ? a : b;
     int len[2];
 
+    my_revstr(a);
+    my_revstr(b);
     len[0] = my_strlen(max);
     len[1] = my_strlen(min);
     if (negs[pos_max]) {
@@ -76,8 +81,6 @@ char *inf_add_sub(char *a, char *b, int neg_a, int neg_b)
     char *result = malloc(sizeof(char) * (max + 2));
     int negs[2] = {neg_a, neg_b};
 
-    my_revstr(a);
-    my_revstr(b);
     if (neg_a && neg_b) {
         result[0] = '-';
         inf_add(a, b, len, &result[1]);
