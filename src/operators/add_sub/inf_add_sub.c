@@ -49,7 +49,7 @@ char *compute_sub(char *a, char *b, int len[], char *result)
         if (temp < 0)
             temp += 10;
         calc = temp % 10;
-        result[i] = i >= len[1] && calc == 0 ? '\0' : calc + '0';
+        result[i] = i >= len[0] && calc == 0 ? '\0' : calc + '0';
     }
     result[max] = '\0';
     return (my_revstr(result));
