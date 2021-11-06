@@ -69,6 +69,7 @@ int main(int ac, char **av)
     expr = get_expr(size);
     result = eval_expr(av[1], av[2], expr, size);
     my_putstr(result);
+    free(expr);
     free(result);
     return (EXIT_SUCCESS);
 }

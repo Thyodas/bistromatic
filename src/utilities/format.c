@@ -32,19 +32,22 @@ char *remove_signs(char *input, char *signs)
     return (out);
 }
 
-int format_counter(char *str)
+int format_counter(char *str, char *signs)
 {
-    int counter = my_strlen(str);
+    int counter = 0;
 
     for (int i = 0; i < my_strlen(str); i++)
-        if (str[i] == '-' && str[i + 1] == '(')
-            counter += 2;
+        if ((str[i] == signs[OP_SUB_IDX] || str[i] == signs[OP_PLUS_IDX])
+        && str[i + 1] == signs[0])
+            counter += 3;
+        else
+            counter++;
     return (counter);
 }
 
 char *format(char *str, char *signs)
 {
-    int size = format_counter(str);
+    int size = format_counter(str, signs);
     char *output = malloc(sizeof(char) * (size + 1));
     int output_index = 0;
 
@@ -69,7 +72,6 @@ char *full_format(char *str)
     char *removed_signs = remove_signs(str, "()+-*/%");
     char *result = format(removed_signs, "()+-*/%");
 
-    free(str);
     free(removed_signs);
     return (result);
 }
