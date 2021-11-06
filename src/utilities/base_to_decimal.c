@@ -18,7 +18,6 @@ char *inf_mul(char *number1, char *number2, int sign);
 char *my_add(char *a, char *b);
 char *my_power_str(char *number, int power);
 
-
 char *compute(int index, int *len, char *base_type_in_str, char *new_number)
 {
     int size = size_nbr(index);

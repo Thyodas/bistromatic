@@ -15,4 +15,3 @@ char *base_to_base(char *nb, char *base_from, char *base_to, char *operators)
     stack_base *list = fill_stack_nbr(decimal, base_to);
     return (compute_stack(list, base_to));
 }
-
