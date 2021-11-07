@@ -37,7 +37,8 @@ Test(main_test, inf_add_sub3)
     char *a = my_strdup("435439435845843984358439");
     char *b = my_strdup("45359766785665822182412343254343435433339459569");
     char *result = my_add(a, b);
-    cr_assert_str_eq(result, "45359766785665822182412778693779281277323818008");
+    cr_assert_str_eq(result,
+    "45359766785665822182412778693779281277323818008");
     free(result);
     free(a);
     free(b);
