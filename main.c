@@ -15,7 +15,7 @@ char *full_format(char *str);
 int duplicates_detector(char *string);
 int same_char(char *base, char *operator);
 
-static char  *get_expr(unsigned int size)
+static char *get_expr(unsigned int size)
 {
     char *expr;
 
@@ -61,7 +61,7 @@ int main(int ac, char **av)
     check_all(av[1], av[2]);
     size = my_getnbr(av[3]);
     expr = get_expr(size);
-    result = eval_expr(av[1], av[2], expr, size);
+    result = eval_expr(av[1], av[2], expr);
     my_putstr(result);
     free(expr);
     free(result);

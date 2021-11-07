@@ -12,6 +12,7 @@ int same_char(char *base, char *operator)
 {
     int error_detected = 0;
     char *temp = malloc(sizeof(char) * 2);
+    temp[1] = '\0';
 
     for (int i = 0; i < my_strlen(base); i++) {
         temp[0] = base[i];
@@ -27,7 +28,7 @@ int same_char(char *base, char *operator)
     return error_detected ? (84) : (0);
 }
 
-int duplicates_detector(char *string) 
+int duplicates_detector(char *string)
 {
     int error_detected = 0;
 
