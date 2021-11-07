@@ -40,7 +40,7 @@ stack_t *rpn(queue_t *queue, operator_t *operators_funcs)
     operator_t *op = NULL;
 
     while (elt != NULL) {
-        op = get_op(operators_funcs, elt);
+        op = get_real_op(operators_funcs, elt);
         if (op->weight == 0)
             stack_push(new_stack, elt);
         else {

@@ -18,7 +18,7 @@ base_op_t *base_op, char **brackets);
 stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
 char *format(char *str, char *signs);
 char *clean_zero_before(char *input);
-char *full_format(char *str);
+char *full_format(char *str, char *signs, char *base);
 char *decimal_to_base(char *nb, char *base_to, char *operators);
 
 char *to_str(char c)
@@ -44,7 +44,7 @@ operator_t *operators)
 {
     char *result_str = NULL;
     char *result = NULL;
-    char *format_str = full_format(str);
+    char *format_str = full_format(str, base_op->operators, base_op->base);
 
     queue_t *result_queue = shunting_yard(format_str, operators,
     base_op, brackets);
@@ -66,12 +66,12 @@ char *eval_expr(char *base, char *op_str, char *str)
 {
     char *result = NULL;
     char *converted_str = NULL;
-    operator_t operators[] = {{to_str(op_str[OP_PLUS_IDX]), &my_add, 1},
-        {to_str(op_str[OP_SUB_IDX]), &my_sub, 1},
-        {to_str(op_str[OP_MULT_IDX]), &my_mul, 2},
-        {to_str(op_str[OP_DIV_IDX]), &my_div, 2},
-        {to_str(op_str[OP_MOD_IDX]), &my_mod, 2},
-        {"", NULL, 0},
+    operator_t operators[] = {{to_str(op_str[OP_PLUS_IDX]), "+", &my_add, 1},
+        {to_str(op_str[OP_SUB_IDX]), "-", &my_sub, 1},
+        {to_str(op_str[OP_MULT_IDX]), "*", &my_mul, 2},
+        {to_str(op_str[OP_DIV_IDX]), "/", &my_div, 2},
+        {to_str(op_str[OP_MOD_IDX]), "%", &my_mod, 2},
+        {"", "", NULL, 0},
     };
     char *brackets[] = {to_str(op_str[OP_OPEN_PARENT_IDX]),
     to_str(op_str[OP_CLOSE_PARENT_IDX])};

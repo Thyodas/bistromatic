@@ -20,7 +20,7 @@ char *remove_signs(char *input, char *signs)
             detected = 1;
             input[i] == signs[OP_SUB_IDX] ? counter++ : i;
         } else if (detected) {
-            out[index++] = counter % 2 == 0 ? '+' : '-';
+            out[index++] = counter % 2 == 0 ? signs[2] : signs[3];
             out[index] = input[i];
             counter = 0;
             detected = 0;
@@ -45,9 +45,10 @@ int format_counter(char *str, char *signs)
     return (counter);
 }
 
-char *format(char *str, char *signs)
+char *format(char *str, char *signs, char *base)
 {
     int size = format_counter(str, signs);
+    int nb_pos = my_strlen(base) > 1;
     char *output = malloc(sizeof(char) * (size + 1));
     int output_index = 0;
 
@@ -55,7 +56,7 @@ char *format(char *str, char *signs)
         if ((str[i] == signs[OP_SUB_IDX] || str[i] == signs[OP_PLUS_IDX])
         && str[i + 1] == signs[0]) {
             output[output_index] = str[i];
-            output[++output_index] = '1';
+            output[++output_index] = base[nb_pos];
             output[++output_index] = signs[OP_MULT_IDX];
             output[++output_index] = signs[OP_OPEN_PARENT_IDX];
             i++;
@@ -67,10 +68,10 @@ char *format(char *str, char *signs)
     return (output);
 }
 
-char *full_format(char *str)
+char *full_format(char *str, char *signs, char *base)
 {
-    char *removed_signs = remove_signs(str, "()+-*/%");
-    char *result = format(removed_signs, "()+-*/%");
+    char *removed_signs = remove_signs(str, signs);
+    char *result = format(removed_signs, signs, base);
 
     free(removed_signs);
     return (result);
