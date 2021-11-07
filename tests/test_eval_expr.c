@@ -104,3 +104,11 @@ Test(eval_expr, division_with_neg)
     cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5/5"), "-1");
     cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5/-5"), "1");
 }
+
+Test(eval_expr, modulo_with_neg)
+{
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "5%-4"), "1");
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5%4"), "-1");
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5%-4"), "-1");
+}
+
