@@ -14,6 +14,7 @@
 char *full_format(char *str);
 int duplicates_detector(char *string);
 int same_char(char *base, char *operator);
+int check_not_in(char *expression, char *base, char *operator);
 
 static char *get_expr(unsigned int size)
 {

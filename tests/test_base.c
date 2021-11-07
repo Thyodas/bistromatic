@@ -8,7 +8,7 @@
 #include <criterion/criterion.h>
 #include "my.h"
 
-char *decimal_to_base(char *nb, char *base_to, char *operators);
+char *decimal_to_base(char *nb, char *base_to);
 int search_base(char *base_from, char to_search);
 char *eval_expr(char *base, char *op, char *str);
 
@@ -21,9 +21,9 @@ Test(search_base, search_base_tests)
 
 Test(decimal_to_base, decimal_to_base_classic)
 {
-    cr_assert_str_eq(decimal_to_base("123", "0123456789ABCDEF",
-    "()+-*/%"), "7B");
-    cr_assert_str_eq(decimal_to_base("123", "01", "()+-*/%"),
+    cr_assert_str_eq(decimal_to_base("123", "0123456789ABCDEF"),
+    "7B");
+    cr_assert_str_eq(decimal_to_base("123", "01"),
     "1111011");
 }
 

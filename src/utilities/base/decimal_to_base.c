@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 int stack_base_size(stack_base *begin);
-int find_sign_decimal(char *number, char *operators, int *nb_of_sign);
+int find_sign_decimal(char *number, int *nb_of_sign);
 char *my_mod(char *a, char *b);
 char *clean_zero_before(char *input);
 void my_add_in_stack_base(stack_base **list, char *data);
@@ -53,7 +53,7 @@ char *push_in_stack(stack_base **stack, char *nb, char *len_base_in_str)
     return nb;
 }
 
-stack_base *fill_stack_nbr(char *nbr, char *base, char *operators)
+stack_base *fill_stack_nbr(char *nbr, char *base)
 {
     stack_base *stack = NULL;
     int nb_of_sign = 0;
@@ -62,7 +62,7 @@ stack_base *fill_stack_nbr(char *nbr, char *base, char *operators)
     char *len_base_in_str = malloc(sizeof(char) * size + 1);
     str_initialize_alloc(len_base_in_str, size + 1);
     my_putnbr_base_str(len_base, "0123456789", len_base_in_str);
-    int sign = find_sign_decimal(nbr, operators, &nb_of_sign);
+    int sign = find_sign_decimal(nbr, &nb_of_sign);
     nbr = &nbr[nb_of_sign];
 
     if (nbr[0] == '0')
@@ -76,9 +76,9 @@ stack_base *fill_stack_nbr(char *nbr, char *base, char *operators)
     return stack;
 }
 
-char *decimal_to_base(char *nb, char *base_to, char *operators)
+char *decimal_to_base(char *nb, char *base_to)
 {
-    stack_base *list = fill_stack_nbr(nb, base_to, operators);
+    stack_base *list = fill_stack_nbr(nb, base_to);
     char *output = compute_stack(list, base_to);
     return (output);
 }

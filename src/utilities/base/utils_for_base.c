@@ -37,7 +37,7 @@ int search_base(char *base_from, char to_search)
     return -1;
 }
 
-int find_sign_decimal(char *number, char *operators, int *nb_of_sign)
+int find_sign_decimal(char *number, int *nb_of_sign)
 {
     int nb_minus = 0;
     for (int i = 0; is_op_minus_plus_decimal(number[i]); ++i) {

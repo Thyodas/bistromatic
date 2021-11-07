@@ -19,7 +19,7 @@ stack_t *rpn(queue_t *queue, operator_t *operators_funcs);
 char *format(char *str, char *signs);
 char *clean_zero_before(char *input);
 char *full_format(char *str, char *signs, char *base);
-char *decimal_to_base(char *nb, char *base_to, char *operators);
+char *decimal_to_base(char *nb, char *base_to);
 
 char *to_str(char c)
 {
@@ -80,7 +80,7 @@ char *eval_expr(char *base, char *op_str, char *str)
     base_op->base = base;
     base_op->operators = op_str;
     result = compute_eval_expr(str, base_op, brackets, operators);
-    converted_str = decimal_to_base(result, base, op_str);
+    converted_str = decimal_to_base(result, base);
     free(result);
     return (converted_str);
 }
