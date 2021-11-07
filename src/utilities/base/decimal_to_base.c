@@ -65,6 +65,8 @@ stack_base *fill_stack_nbr(char *nbr, char *base, char *operators)
     int sign = find_sign(nbr, operators, &nb_of_sign);
     nbr = &nbr[nb_of_sign];
 
+    if (nbr[0] == '0')
+        push_in_stack(&stack, nbr, len_base_in_str);
     while (nbr[0] != '0') {
         nbr = push_in_stack(&stack, nbr, len_base_in_str);
     }

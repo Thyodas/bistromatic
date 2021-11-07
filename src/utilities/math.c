@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 char *str_initialize_alloc(char *input, int size);
-char *inf_mul(char *number1, char *number2, int sign);
+char *my_mul(char *number1, char *number2);
 
 char *my_power_str(char *number, int power)
 {
@@ -24,7 +24,7 @@ char *my_power_str(char *number, int power)
     my_strcpy(tmp, number);
 
     for (int i = 0; i < power - 1; i++) {
-        char *tmp_res = inf_mul(tmp, number, 1);
+        char *tmp_res = my_mul(tmp, number);
         tmp = tmp_res;
     }
     return tmp;

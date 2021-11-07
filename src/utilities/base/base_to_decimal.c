@@ -14,7 +14,7 @@ int search_base(char *base_from, char to_search);
 int find_sign(char *number, char *operators, int *nb_of_sign);
 char *handle_sign(int sign, char *new_number);
 char *str_initialize_alloc(char *input, int size);
-char *inf_mul(char *number1, char *number2, int sign);
+char *my_mul(char *number1, char *number2);
 char *my_add(char *a, char *b);
 char *my_power_str(char *number, int power);
 
@@ -24,9 +24,9 @@ char *compute(int index, int *len, char *base_type_in_str, char *new_number)
     char *index_in_str = malloc(sizeof(char) * size + 1);
     str_initialize_alloc(index_in_str, size + 1);
     my_putnbr_base_str(index, "0123456789", index_in_str);
-    char *power = my_power_str(base_type_in_str, *len - 1);
+    char *power = my_power_str(base_type_in_str, *(len) - 1);
     (*len)--;
-    char *to_add = inf_mul(index_in_str, power, 1);
+    char *to_add = my_mul(index_in_str, power);
     char *tmp_res = my_add(new_number, to_add);
     free(to_add);
     free(new_number);
