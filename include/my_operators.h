@@ -13,6 +13,7 @@
         char *(*func)(char *a, char *b);
         int weight;
     } operator_t;
+
     char *my_mul(char *a, char *b);
     char *my_sub(char *a, char *b);
     char *my_add(char *a, char *b);

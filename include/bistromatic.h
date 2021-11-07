@@ -25,6 +25,6 @@
     #define SYNTAX_ERROR_MSG "syntax error"
     #define ERROR_MSG "error"
 
-    char *eval_expr(char *base, char *op, char *str, int size);
+    char *eval_expr(char *base, char *op, char *str);
 
 #endif /* !BISTROTIC_H */
