@@ -36,24 +36,23 @@ operator_t *operators)
     }
 }
 
-int nb_handle(queue_t *queue, char const *str, int i, base_op_t *base_op)
+int nb_handle(queue_t *queue, char const *str, int i, base_op_t *op)
 {
-    char *nbr = my_slicenbr_base(&str[i], base_op->base, base_op->operators);
+    char *nbr = my_slicenbr_base(&str[i], op->base, op->operators);
     int len = my_strlen(nbr);
     char temp[2] = {0};
 
-    if (i > 0 && (str[i] == base_op->operators[OP_SUB_IDX]
-    || str[i] == base_op->operators[OP_PLUS_IDX])) {
+    if (i > 0 && (str[i] == op->operators[3] || str[i] == op->operators[2])) {
         temp[0] = str[i - 1];
-        if (str[i - 1] == base_op->operators[OP_CLOSE_PARENT_IDX]
-        || my_strstr(base_op->base, temp)) {
+        if (str[i - 1] == op->operators[OP_CLOSE_PARENT_IDX]
+        || my_strstr(op->base, temp)) {
             free(nbr);
             return (0);
         }
     }
     if (len > 0) {
         queue_add(queue,
-        base_to_decimal(nbr, base_op->base, base_op->operators));
+        base_to_decimal(nbr, op->base, op->operators));
         return (len);
     } else {
         free(nbr);
