@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 int stack_base_size(stack_base *begin);
-int find_sign(char *number, char *operators, int *nb_of_sign);
+int find_sign_decimal(char *number, char *operators, int *nb_of_sign);
 char *my_mod(char *a, char *b);
 char *clean_zero_before(char *input);
 void my_add_in_stack_base(stack_base **list, char *data);
@@ -62,7 +62,7 @@ stack_base *fill_stack_nbr(char *nbr, char *base, char *operators)
     char *len_base_in_str = malloc(sizeof(char) * size + 1);
     str_initialize_alloc(len_base_in_str, size + 1);
     my_putnbr_base_str(len_base, "0123456789", len_base_in_str);
-    int sign = find_sign(nbr, operators, &nb_of_sign);
+    int sign = find_sign_decimal(nbr, operators, &nb_of_sign);
     nbr = &nbr[nb_of_sign];
 
     if (nbr[0] == '0')

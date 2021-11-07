@@ -10,9 +10,9 @@
 
 char *str_initialize_alloc(char *input, int size);
 
-int is_operator_minus_plus(char c, char *operators)
+int is_op_minus_plus_decimal(char c)
 {
-    if (c == operators[2] || c == operators[3])
+    if (c == '+' || c == '-')
         return 1;
     return 0;
 }
@@ -37,12 +37,13 @@ int search_base(char *base_from, char to_search)
     return -1;
 }
 
-int find_sign(char *number, char *operators, int *nb_of_sign)
+int find_sign_decimal(char *number, char *operators, int *nb_of_sign)
 {
     int nb_minus = 0;
-    for (int i = 0; is_operator_minus_plus(number[i], operators); ++i) {
-        if (number[i] == operators[3])
+    for (int i = 0; is_op_minus_plus_decimal(number[i]); ++i) {
+        if (number[i] == '-') {
             nb_minus++;
+        }
         (*nb_of_sign)++;
     }
     if (nb_minus % 2 == 0) {

@@ -11,7 +11,7 @@
 int is_operator_minus_plus(char c, char *operators);
 int size_nbr(int nb);
 int search_base(char *base_from, char to_search);
-int find_sign(char *number, char *operators, int *nb_of_sign);
+int find_sign_base(char *number, char *operators, int *nb_of_sign);
 char *handle_sign(int sign, char *new_number);
 char *str_initialize_alloc(char *input, int size);
 char *my_mul(char *number1, char *number2);
@@ -42,7 +42,7 @@ char *my_getnbr_base_str(char *number, char *base_from, char *operators)
     char *base_type_in_str = malloc(sizeof(char) * size_nbr(base_type) + 1);
     str_initialize_alloc(base_type_in_str, size_nbr(base_type) + 1);
     my_putnbr_base_str(base_type, "0123456789", base_type_in_str);
-    int sign = find_sign(number, operators, &nb_of_sign);
+    int sign = find_sign_base(number, operators, &nb_of_sign);
     number = &number[nb_of_sign];
     int len = my_strlen(number);
     char *new_number = malloc(sizeof(char) * len + 1);
