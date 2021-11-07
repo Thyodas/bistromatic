@@ -26,7 +26,8 @@ int same_char(char *base, char *operator)
     return error_detected ? (84) : (0);
 }
 
-int duplicates_detector(char *string) {
+int duplicates_detector(char *string) 
+{
     int error_detected = 0;
 
     for (int i = 0; i < my_strlen(string) && !error_detected; i++)
