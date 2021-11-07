@@ -27,6 +27,13 @@ char *to_str(char c)
     return (new);
 }
 
+void free_operators_str(operator_t *operators)
+{
+    for (int i = 0 ; operators[i].weight != 0 ; i++) {
+        free(operators[i].symbols);
+    }
+}
+
 char *eval_expr(char *base, char *op, char *str)
 {
     char *result_str = NULL;
@@ -51,5 +58,6 @@ char *eval_expr(char *base, char *op, char *str)
     }
     result = clean_zero_before(result_str);
     stack_free(result_stack);
+    free_operators_str(operators);
     return (result);
 }
