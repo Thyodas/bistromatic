@@ -37,3 +37,18 @@ int duplicates_detector(char *string)
             error_detected = string[i] == string[j];
     return error_detected ? (84) : (0);
 }
+
+int check_not_in(char *expression, char *base, char *operator)
+{
+    int error_detected = 0;
+    char *temp = malloc(sizeof(char) * 2);
+
+    temp[1] = '\0';
+    for (int i = 0; i < my_strlen(expression); i++) {
+        temp[0] = expression[i];
+        if (my_strstr(base, temp) == NULL && my_strstr(operator, temp) == NULL)
+            error_detected++;
+    }
+    free(temp);
+    return error_detected ? (84) : (0);
+}
