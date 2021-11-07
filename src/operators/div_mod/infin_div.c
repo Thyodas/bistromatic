@@ -21,6 +21,7 @@ int my_strlen(char const *str);
 int my_getnbr(char const *str);
 int my_equal(char *a, char *b);
 char *put_neg_sign(char *result, int sign);
+int my_greater(char *a, char *b);
 
 char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
