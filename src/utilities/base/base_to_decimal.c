@@ -28,8 +28,10 @@ char *compute(int index, int *len, char *base_type_in_str, char *new_number)
     (*len)--;
     char *to_add = my_mul(index_in_str, power);
     char *tmp_res = my_add(new_number, to_add);
+    free(power);
     free(to_add);
     free(new_number);
+    free(index_in_str);
     return tmp_res;
 }
 
