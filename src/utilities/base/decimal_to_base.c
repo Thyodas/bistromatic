@@ -50,7 +50,6 @@ char *push_in_stack(stack_base **stack, char *nb, char *len_base_in_str)
     my_add_in_stack_base(stack, to_push);
     char *tmp = nb;
     nb = my_div(tmp, len_base_in_str);
-    free(tmp);
     return nb;
 }
 
