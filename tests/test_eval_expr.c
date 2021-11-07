@@ -97,3 +97,10 @@ Test(eval_expr, division)
     "((13+15/5*(6*(12+14*(30*5+(10*25)-46)+16)-20)*43))"),
     "3855049");
 }
+
+Test(eval_expr, division_with_neg)
+{
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "5/-5"), "-1");
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5/5"), "-1");
+    cr_assert_str_eq(eval_expr("0123456789", "()+-*/%", "-5/-5"), "1");
+}
