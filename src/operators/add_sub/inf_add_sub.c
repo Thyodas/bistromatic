@@ -79,7 +79,7 @@ char *inf_add_sub(char *a, char *b, int neg_a, int neg_b)
 {
     int len[2] = {my_strlen(a), my_strlen(b)};
     int max = len[0] > len[1] ? len[0] : len[1];
-    char *result = malloc(sizeof(char) * (max + 2));
+    char *result = malloc(sizeof(char) * (max + 3));
     int negs[2] = {neg_a, neg_b};
 
     if (neg_a && neg_b) {
