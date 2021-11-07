@@ -13,7 +13,7 @@
 #include "bistromatic.h"
 #include "base_operators.h"
 
-char *my_slicenbr_base(char const *str, char *base);
+char *my_slicenbr_base(char const *str, char *base, char *operators);
 char *base_to_decimal(char *nb, char *base_from, char *operators);
 
 void op_handle(queue_t *queue, stack_t *stack, char *current,
@@ -21,23 +21,24 @@ operator_t *operators)
 {
     operator_t *op = get_op(operators, current);
     char *top = stack_peek(stack);
-    char *op_str = op->symbols;
-    int op_weight = 0;
+    operator_t *top_op = get_real_op(operators, top);
+    int op_weight = op->weight;
 
-    if (op->weight != 0) {
-        op_weight = get_op(operators, op_str)->weight;
-        while (get_op(operators, top)->weight >= op_weight
+    if (op_weight != 0) {
+        while (top_op->weight >= op_weight
         && my_strlen(top) != 0) {
-            queue_add(queue, stack_pop(stack));
+            stack_pop(stack);
+            queue_add(queue, top_op->real_symbols);
             top = stack_peek(stack);
+            top_op = get_real_op(operators, top);
         }
-        stack_push(stack, op_str);
+        stack_push(stack, op->real_symbols);
     }
 }
 
 int nb_handle(queue_t *queue, char const *str, int i, base_op_t *base_op)
 {
-    char *nbr = my_slicenbr_base(&str[i], base_op->base);
+    char *nbr = my_slicenbr_base(&str[i], base_op->base, base_op->operators);
     int len = my_strlen(nbr);
     char temp[2] = {0};
 
