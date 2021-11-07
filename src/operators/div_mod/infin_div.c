@@ -26,12 +26,11 @@ int my_greater(char *a, char *b);
 char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
     char *previous_sum = NULL;
-    char *tmp_sum = NULL;
     char *keys_sum = my_strdup("0");
     char *values_sum = my_strdup("0");
 
     while (stack_peek(values)[0] != '\0' && stack_peek(keys)[0] != '\0') {
-        tmp_sum = my_add(values_sum, stack_peek(values));
+        char *tmp_sum = my_add(values_sum, stack_peek(values));
         if (my_lower_equals(tmp_sum, dividend)) {
             previous_sum = keys_sum;
             keys_sum = my_add(keys_sum, stack_pop(keys));
