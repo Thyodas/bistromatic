@@ -24,8 +24,9 @@ char *my_power_str(char *number, int power)
     my_strcpy(tmp, number);
 
     for (int i = 0; i < power - 1; i++) {
-        char *tmp_res = my_mul(tmp, number);
-        tmp = tmp_res;
+        char *previous_tmp = tmp;
+        tmp = my_mul(tmp, number);
+        free(previous_tmp);
     }
     return tmp;
 }
