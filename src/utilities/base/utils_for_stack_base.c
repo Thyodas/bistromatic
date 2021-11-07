@@ -30,14 +30,3 @@ int stack_base_size(stack_base *begin)
     }
     return (size);
 }
-
-void my_show_stack_base(stack_base *list)
-{
-    stack_base *tmp;
-
-    tmp = list;
-    while (tmp != NULL) {
-        my_putstr(tmp->nbr);
-        tmp = tmp->next;
-    }
-}
