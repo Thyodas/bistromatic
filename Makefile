@@ -21,12 +21,12 @@ SRC = main.c \
 	  src/utilities/condition.c \
 	  src/utilities/cleaning.c \
 	  src/utilities/format.c \
-	  src/utilities/utils_for_base.c \
+	  src/utilities/base/utils_for_base.c \
 	  src/utilities/math.c \
-	  src/utilities/utils_for_stack_base.c \
-	  src/utilities/base_to_base.c \
-	  src/utilities/base_to_decimal.c \
-	  src/utilities/decimal_to_base.c \
+	  src/utilities/base/utils_for_stack_base.c \
+	  src/utilities/base/base_to_base.c \
+	  src/utilities/base/base_to_decimal.c \
+	  src/utilities/base/decimal_to_base.c \
 	  src/utilities/error_handling.c
 
 OBJ = $(SRC:.c=.o)
