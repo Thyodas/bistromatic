@@ -24,21 +24,6 @@ char *remove_sign(char *input)
     return (output);
 }
 
-char *add_minus(char *input)
-{
-    char *output = malloc(sizeof(char) * (my_strlen(input) + 2));
-    int index = 0;
-
-    output[0] = '-';
-    for (int i = 1; i <= my_strlen(input); i++) {
-        if (i == 0)
-            continue;
-        output[i] = input[index];
-        index++;
-    }
-    return (output);
-}
-
 char *clean_zero_before(char *input)
 {
     int size = my_strlen(input);
