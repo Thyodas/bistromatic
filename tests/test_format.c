@@ -30,6 +30,7 @@ Test(format, remove_useless_signs)
 Test(format, mixed_format_remove_signs)
 {
     char *removed_signs = remove_signs("-----++-5*--(4+1)-+10", "()+-*/%");
-    cr_assert_str_eq(format(removed_signs, "()+-*/%", "0123456789"), "+5*+1*(4+1)-10");
+    cr_assert_str_eq(format(removed_signs, "()+-*/%", "0123456789"),
+    "+5*+1*(4+1)-10");
 }
 
