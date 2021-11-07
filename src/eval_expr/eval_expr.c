@@ -18,14 +18,28 @@ char *format(char *str, char *signs);
 char *clean_zero_before(char *input);
 char *full_format(char *str);
 
-char *eval_expr(char *base, char *op, char *str, int size)
+char *to_str(char c)
+{
+    char *new = malloc(sizeof(char) * 2);
+
+    new[0] = c;
+    new[1] = '\0';
+    return (new);
+}
+
+char *eval_expr(char *base, char *op, char *str)
 {
     char *result_str = NULL;
     char *result = NULL;
     char *format_str = full_format(str);
 
-    operator_t operators[] = {{"+", &my_add, 1}, {"-", &my_sub, 1},
-    {"/", &my_div, 2}, {"*", &my_mul, 2}, {"%", &my_mod, 2}, {"", NULL, 0}};
+    operator_t operators[] = {{to_str(op[OP_PLUS_IDX]), &my_add, 1},
+        {to_str(op[OP_SUB_IDX]), &my_sub, 1},
+        {to_str(op[OP_MULT_IDX]), &my_mul, 2},
+        {to_str(op[OP_DIV_IDX]), &my_div, 2},
+        {to_str(op[OP_MOD_IDX]), &my_mod, 2},
+        {"", NULL, 0}
+    };
     queue_t *result_queue = shunting_yard(format_str, operators, "0123456789");
     free(format_str);
     stack_t *result_stack = rpn(result_queue, operators);
