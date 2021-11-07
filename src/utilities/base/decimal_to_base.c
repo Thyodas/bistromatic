@@ -24,8 +24,10 @@ char *compute_stack(stack_base *stack, char *base_to)
     int list_size = stack_base_size(stack);
     char *output = malloc(sizeof(char) * list_size + 1);
     int index = 0;
+    stack_base *tmp = NULL;
 
     while (stack != NULL) {
+        tmp = stack;
         if (stack->nbr[0] == '-')
             output[index++] = '-';
         else {
@@ -35,6 +37,7 @@ char *compute_stack(stack_base *stack, char *base_to)
             output[index++] = to_push;
         }
         stack = stack->next;
+        free(tmp);
     }
     output[index] = '\0';
     return output;
@@ -45,9 +48,7 @@ char *push_in_stack(stack_base **stack, char *nb, char *len_base_in_str)
     char *remainder = my_mod(nb, len_base_in_str);
     char *to_push = clean_zero_before(remainder);
     my_add_in_stack_base(stack, to_push);
-    int len_nb = my_strlen(nb);
-    char *tmp = malloc(sizeof(char) * len_nb + 1);
-    my_strcpy(tmp, nb);
+    char *tmp = nb;
     nb = my_div(tmp, len_base_in_str);
     free(tmp);
     return nb;

@@ -21,15 +21,17 @@ int my_strlen(char const *str);
 int my_getnbr(char const *str);
 int my_equal(char *a, char *b);
 char *put_neg_sign(char *result, int sign);
+int my_greater(char *a, char *b);
 
 char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
 {
     char *previous_sum = NULL;
+    char *tmp_sum = NULL;
     char *keys_sum = my_strdup("0");
     char *values_sum = my_strdup("0");
 
     while (stack_peek(values)[0] != '\0' && stack_peek(keys)[0] != '\0') {
-        char *tmp_sum = my_add(values_sum, stack_peek(values));
+        tmp_sum = my_add(values_sum, stack_peek(values));
         if (my_lower_equals(tmp_sum, dividend)) {
             previous_sum = keys_sum;
             keys_sum = my_add(keys_sum, stack_pop(keys));
@@ -54,9 +56,8 @@ void create_table(char *divide, char *divisor, stack_t *keys, stack_t *values)
 
     while (1) {
         temp_value = my_mul(temp_key, divisor);
-        if (my_greater_equals(temp_value, divide)) {
+        if (my_greater(temp_value, divide))
             break;
-        }
         stack_push(keys, temp_key);
         stack_push(values, temp_value);
         temp_key = my_mul(temp_key, "2");
