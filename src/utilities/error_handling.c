@@ -41,14 +41,14 @@ int duplicates_detector(char *string)
 int check_not_in(char *expression, char *base, char *operator)
 {
     int error_detected = 0;
-    char *temp = malloc(sizeof(char) * 2);
+    char *tmp = malloc(sizeof(char) * 2);
 
-    temp[1] = '\0';
+    tmp[1] = '\0';
     for (int i = 0; i < my_strlen(expression); i++) {
-        temp[0] = expression[i];
-        if (my_strstr(base, temp) == NULL && my_strstr(operator, temp) == NULL)
+        tmp[0] = expression[i];
+        if (my_strstr(base, tmp) == NULL && my_strstr(operator, tmp) == NULL)
             error_detected++;
     }
-    free(temp);
+    free(tmp);
     return error_detected ? (84) : (0);
 }
