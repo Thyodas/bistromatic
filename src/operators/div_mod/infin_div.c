@@ -23,7 +23,7 @@ int my_equal(char *a, char *b);
 char *put_neg_sign(char *result, int sign);
 int my_greater(char *a, char *b);
 
-char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
+char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int mod)
 {
     char *previous_sum = NULL;
     char *keys_sum = my_strdup("0");
@@ -44,7 +44,7 @@ char *infin_div_two(char *dividend, stack_t *keys, stack_t *values, int modulo)
         }
         free(tmp_sum);
     }
-    return (modulo ? my_sub(dividend, values_sum) : keys_sum);
+    return (mod ? my_sub(dividend, values_sum) : keys_sum);
 }
 
 void create_table(char *divide, char *divisor, stack_t *keys, stack_t *values)
