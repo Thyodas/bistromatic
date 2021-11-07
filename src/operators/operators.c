@@ -96,7 +96,7 @@ char *my_mod(char *a, char *b)
 
     neg_a = s1[0] == '-';
     neg_b = s2[0] == '-';
-    result = infin_div(remove_sign(s1), remove_sign(s2), 1, neg_a == neg_b);
+    result = infin_div(remove_sign(s1), remove_sign(s2), 1, !neg_a);
     if (neg_a)
         free(s1);
     if (neg_b)
