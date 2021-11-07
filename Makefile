@@ -24,7 +24,6 @@ SRC = main.c \
 	  src/utilities/base/utils_for_base.c \
 	  src/utilities/math.c \
 	  src/utilities/base/utils_for_stack_base.c \
-	  src/utilities/base/base_to_base.c \
 	  src/utilities/base/base_to_decimal.c \
 	  src/utilities/base/decimal_to_base.c \
 	  src/utilities/error_handling.c
@@ -57,7 +56,6 @@ TEST_FILES = tests/test_eval_expr.c \
 			 src/utilities/cleaning.c \
 			 src/utilities/format.c \
 			 src/utilities/base/utils_for_base.c \
-			 src/utilities/base/base_to_base.c \
 			 src/utilities/base/base_to_decimal.c \
 			 src/utilities/base/decimal_to_base.c \
 			 src/utilities/base/utils_for_stack_base.c \
