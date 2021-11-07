@@ -51,7 +51,6 @@ void create_table(char *divide, char *divisor, stack_t *keys, stack_t *values)
 
     char *temp_value = my_strdup("1");
     char *temp_key = my_strdup("1");
-    char *previous_calc = NULL;
 
     while (1) {
         temp_value = my_mul(temp_key, divisor);

@@ -12,6 +12,8 @@
 #include "my.h"
 
 char *full_format(char *str);
+int duplicates_detector(char *string);
+int same_char(char *base, char *operator);
 
 static char  *get_expr(unsigned int size)
 {
@@ -34,7 +36,7 @@ static char  *get_expr(unsigned int size)
     return (expr);
 }
 
-static void check_all(char const *base, char const *ops)
+static void check_all(char *base, char *ops)
 {
     if (my_strlen(ops) != 7 || duplicates_detector(base) ||
     duplicates_detector(ops) || same_char(base, ops)) {

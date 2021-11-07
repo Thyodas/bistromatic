@@ -5,6 +5,7 @@
 ** error_handling
 */
 
+#include "my.h"
 #include <stdlib.h>
 
 int same_char(char *base, char *operator)

@@ -11,6 +11,13 @@
 
 int stack_base_size(stack_base *begin);
 int find_sign(char *number, char *operators, int *nb_of_sign);
+char *my_mod(char *a, char *b);
+char *clean_zero_before(char *input);
+void my_add_in_stack_base(stack_base **list, char *data);
+int stack_base_size(stack_base *begin);
+char *my_div(char *a, char *b);
+int size_nbr(int nb);
+char *str_initialize_alloc(char *input, int size);
 
 char *compute_stack(stack_base *stack, char *base_to)
 {
